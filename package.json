@@ -4,6 +4,7 @@
   "homepage": "https://vre2h.github.io/booksarebetter",
   "private": true,
   "dependencies": {
+    "lodash": "^4.17.10",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
