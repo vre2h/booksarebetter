@@ -1,11 +1,25 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
+import logger from 'redux-logger';
 import throttle from 'lodash/throttle';
 import rootReducer from './reducer';
 import { loadState, saveState } from './localStorage';
 
 const configureStore = () => {
   const persistedState = loadState();
-  const store = createStore(rootReducer, persistedState);
+  const middlewares = [];
+
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(logger);
+  }
+  const store = createStore(
+    rootReducer,
+    persistedState,
+    compose(
+      ...middlewares,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+  );
 
   store.subscribe(
     throttle(() => {
