@@ -1,6 +1,7 @@
 {
   "name": "booksarebetter",
   "version": "0.1.0",
+  "homepage": "https://vre2h.github.io/booksarebetter",
   "private": true,
   "dependencies": {
     "prop-types": "^15.6.2",
@@ -14,10 +15,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^2.6.2",
+    "gh-pages": "^1.2.0",
     "prettier": "^1.13.7",
     "react-test-renderer": "^16.4.1"
   }
