@@ -14,7 +14,6 @@ class Login extends React.Component {
     }
 
     const { handleSubmit, login, valid } = this.props;
-    const required = value => (value ? undefined : 'Required');
 
     return (
       <div className="login-wrapper">
@@ -28,8 +27,7 @@ class Login extends React.Component {
               type="text"
               label="Text"
               bsSize="large"
-              placeholder="Login"
-              validate={[required]}
+              placeholder="Login.."
             />
           </div>
           <div>
@@ -39,7 +37,7 @@ class Login extends React.Component {
               id="formControlsPassword"
               type="password"
               label="Password"
-              placeholder="Password"
+              placeholder="Password.."
               bsSize="large"
             />
           </div>
