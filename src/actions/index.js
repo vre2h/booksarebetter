@@ -1,10 +1,8 @@
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+import { LOGIN_SUCCESS } from './constants';
 
 const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
-  payload: {
-    user,
-  },
+  payload: user,
 });
 
-export { loginSuccess };
+export { loginSuccess, LOGIN_SUCCESS };
