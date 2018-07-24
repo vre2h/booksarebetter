@@ -4,7 +4,7 @@ export default function(values) {
 
   requiredFields.forEach(field => {
     if (!values[field]) {
-      errors[field] = "You doesn't fill required field";
+      errors[field] = "You doesn't fill required field!";
     }
 
     if (values[field] && values[field].length < 5) {
