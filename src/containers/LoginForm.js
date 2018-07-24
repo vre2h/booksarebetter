@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import { loginSuccess } from '../actions';
-import Login from '../components/Login';
+import Login from '../components/Login/';
 import validate from '../helpers/validate';
 
 const mapDispatchToProps = dispatch => ({
