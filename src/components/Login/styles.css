@@ -1,0 +1,121 @@
+.login-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  padding: 30px;
+  background: #212121;
+  border-radius: 6px;
+}
+
+@media screen and (min-width: 500px) {
+  .login-wrapper {
+    width: 420px;
+  }
+}
+
+.login-label {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.login-alert {
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+@-webkit-keyframes blinkRed {
+  from {
+    background-color: #f00;
+  }
+  50% {
+    background-color: #a00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+      rgba(255, 0, 0, 0.5) 0 2px 0;
+  }
+  to {
+    background-color: #f00;
+  }
+}
+@-moz-keyframes blinkRed {
+  from {
+    background-color: #f00;
+  }
+  50% {
+    background-color: #a00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+      rgba(255, 0, 0, 0.5) 0 2px 0;
+  }
+  to {
+    background-color: #f00;
+  }
+}
+@-ms-keyframes blinkRed {
+  from {
+    background-color: #f00;
+  }
+  50% {
+    background-color: #a00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+      rgba(255, 0, 0, 0.5) 0 2px 0;
+  }
+  to {
+    background-color: #f00;
+  }
+}
+@-o-keyframes blinkRed {
+  from {
+    background-color: #f00;
+  }
+  50% {
+    background-color: #a00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+      rgba(255, 0, 0, 0.5) 0 2px 0;
+  }
+  to {
+    background-color: #f00;
+  }
+}
+@keyframes blinkRed {
+  from {
+    background-color: #f00;
+  }
+  50% {
+    background-color: #a00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+      rgba(255, 0, 0, 0.5) 0 2px 0;
+  }
+  to {
+    background-color: #f00;
+  }
+}
+
+.led-red {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #f00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+    rgba(255, 0, 0, 0.5) 0 2px 12px;
+  -webkit-animation: blinkRed 0.5s infinite;
+  -moz-animation: blinkRed 0.5s infinite;
+  -ms-animation: blinkRed 0.5s infinite;
+  -o-animation: blinkRed 0.5s infinite;
+  animation: blinkRed 0.5s infinite;
+
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  line-height: 28px;
+}
