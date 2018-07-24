@@ -1,6 +1,8 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Field } from 'redux-form';
 import TextField from 'material-ui/TextField';
+import Button from '@material-ui/core/Button';
 
 const renderTextField = ({
   input,
@@ -19,7 +21,14 @@ const renderTextField = ({
 
 class Login extends React.Component {
   render() {
-    const { handleSubmit, login, pristine, reset, submitting } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
+    if (this.props.isAuth) {
+      return <Redirect to={from} />;
+    }
+
+    const { handleSubmit, login, pristine, submitting } = this.props;
+
     return (
       <form onSubmit={handleSubmit(login)}>
         <div>
@@ -38,16 +47,13 @@ class Login extends React.Component {
           />
         </div>
         <div>
-          <button type="submit" disabled={pristine || submitting}>
-            Submit
-          </button>
-          <button
-            type="button"
+          <Button
+            color="primary"
+            type="submit"
             disabled={pristine || submitting}
-            onClick={reset}
           >
-            Clear Values
-          </button>
+            Log In
+          </Button>
         </div>
       </form>
     );
