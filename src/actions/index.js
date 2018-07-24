@@ -25,8 +25,6 @@ const requestMovies = (genre, page = 1) => {
   };
 };
 
-requestMovies();
-
 const selectGenre = genre => ({
   type: SELECT_GENRE,
   payload: {
@@ -43,7 +41,7 @@ const receiveMovies = (selectedGenre, movies) => ({
   type: RECEIVE_MOVIES,
   payload: {
     selectedGenre,
-    movies,
+    movies: movies.results,
   },
 });
 
