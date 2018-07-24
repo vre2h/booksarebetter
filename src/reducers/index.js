@@ -8,5 +8,5 @@ export default combineReducers({
   form: reduxFormReducer,
   isAuth,
   currentUser,
-  movies,
+  moviesInfo: movies,
 });
