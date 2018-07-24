@@ -118,5 +118,6 @@
   font-size: 10px;
   color: #fff;
   text-align: center;
-  line-height: 28px;
+  line-height: 25px;
+  cursor: pointer;
 }
