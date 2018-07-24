@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import MainPageContainer from '../../containers/MainPageContainer';
 
 class ProtectedRoute extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class ProtectedRoute extends React.Component {
       <Route
         render={props =>
           this.props.isAuth ? (
-            <h1>Test</h1>
+            <MainPageContainer />
           ) : (
             <Redirect
               to={{
