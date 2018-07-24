@@ -5,7 +5,7 @@ import rootReducer from '../reducers';
 import { loadState, saveState } from '../localStorage';
 
 const configureStore = () => {
-  const persistedState = loadState();
+  const persistedState = loadState('booksarebetter');
   const middlewares = [logger];
 
   const store = createStore(
@@ -20,9 +20,13 @@ const configureStore = () => {
 
   store.subscribe(
     throttle(() => {
-      saveState({
-        todos: store.getState().todos,
-      });
+      saveState(
+        {
+          isAuth: store.getState().isAuth,
+          currentUser: store.getState().currentUser,
+        },
+        'booksarebetter'
+      );
     }, 1000)
   );
 
