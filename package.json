@@ -4,14 +4,18 @@
   "homepage": "https://vre2h.github.io/booksarebetter",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.4.1",
     "lodash": "^4.17.10",
+    "material-ui": "^0.20.1",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
     "redux-logger": "^3.0.6"
   },
   "scripts": {
