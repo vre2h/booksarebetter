@@ -1,12 +1,13 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import throttle from 'lodash/throttle';
 import rootReducer from '../reducers';
 import { loadState, saveState } from '../localStorage';
 
 const configureStore = () => {
   const persistedState = loadState('booksarebetter');
-  const middlewares = [logger];
+  const middlewares = [logger, thunk];
 
   const store = createStore(
     rootReducer,
