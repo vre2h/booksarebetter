@@ -33,7 +33,7 @@ const moviesByGenre = (state = initialState.moviesByGenre, action) => {
     case RECEIVE_MOVIES:
       return {
         isFetching: false,
-        movies: action.payloads.movie,
+        movies: action.payload.movies,
       };
     case FAILURE_MOVIES:
       return {
