@@ -3,6 +3,7 @@ body {
   padding: 0;
 
   background: url(./img/cinema.jpg);
+  background-color: rgba(21, 21, 21, 1);
   background-size: cover;
   background-repeat: no-repeat;
 
