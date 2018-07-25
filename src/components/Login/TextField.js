@@ -8,7 +8,7 @@ const FieldGroup = ({ id, label, touched, error, ...props }) => {
       <FormControl {...props} />
       {touched && error ? (
         <Alert bsStyle="danger" bsClass="login-alert">
-          <strong>Holy guacomole!</strong> {error}
+          <strong>Holy guacamole!</strong> {error}
         </Alert>
       ) : (
         ''
