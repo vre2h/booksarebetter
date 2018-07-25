@@ -1,5 +1,6 @@
-// Login
+// LogIn / LogOut
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+const LOGOUT = 'LOGOUT';
 
 // Fetch movies
 const REQUEST_MOVIES = 'REQUEST_MOVIES';
@@ -9,6 +10,7 @@ const SELECT_GENRE = 'SELECT_GENRE';
 
 export {
   LOGIN_SUCCESS,
+  LOGOUT,
   REQUEST_MOVIES,
   RECEIVE_MOVIES,
   FAILURE_MOVIES,

@@ -4,11 +4,16 @@ import {
   RECEIVE_MOVIES,
   REQUEST_MOVIES,
   SELECT_GENRE,
+  LOGOUT,
 } from './constants';
 
 const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
   payload: user,
+});
+
+const logOut = () => ({
+  type: LOGOUT,
 });
 
 const requestMovies = (genre, page = 1) => {
@@ -47,6 +52,7 @@ const receiveMovies = (selectedGenre, movies) => ({
 
 export {
   loginSuccess,
+  logOut,
   failureMovies,
   receiveMovies,
   selectGenre,
