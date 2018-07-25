@@ -1,4 +1,12 @@
 .login-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,7 +18,7 @@
 }
 
 @media screen and (min-width: 500px) {
-  .login-wrapper {
+  .login {
     width: 420px;
   }
 }

@@ -17,9 +17,9 @@ class Login extends React.Component {
 
     return (
       <div className="login-wrapper">
-        <form onSubmit={handleSubmit(login)}>
-          <div className="led-red">Rec</div>
-          <div>
+        <div className="login">
+          <form onSubmit={handleSubmit(login)} className="login-form">
+            <div className="led-red">Rec</div>
             <Field
               name="firstName"
               component={RenderTextField}
@@ -29,8 +29,6 @@ class Login extends React.Component {
               bsSize="large"
               placeholder="Login.."
             />
-          </div>
-          <div>
             <Field
               name="password"
               component={RenderTextField}
@@ -40,8 +38,6 @@ class Login extends React.Component {
               placeholder="Password.."
               bsSize="large"
             />
-          </div>
-          <div>
             <Button
               bsStyle="primary"
               bsSize="large"
@@ -51,8 +47,8 @@ class Login extends React.Component {
             >
               Log In
             </Button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     );
   }
