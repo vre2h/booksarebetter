@@ -1,6 +1,6 @@
 import React from 'react';
 import MoviesContainer from '../../containers/MoviesContainer';
-import NavBar from '../NavBar';
+import NavBarContainer from '../../containers/NavBarContainer';
 
 class MainPage extends React.Component {
   componentDidMount() {
@@ -10,7 +10,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBarContainer />
         <MoviesContainer />
       </React.Fragment>
     );
