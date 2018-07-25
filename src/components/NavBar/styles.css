@@ -33,6 +33,20 @@
   transition: ease-in 0.3s;
 }
 
+.nav-bar__logout {
+  display: block;
+  padding: 10px;
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 16px;
+}
+
+.nav-bar__logout:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (min-width: 800px) {
   .nav-bar {
     position: relative;
@@ -41,8 +55,6 @@
   }
 
   .nav-bar__search {
-    position: absolute;
-    right: 20px;
     width: 300px;
     height: 30px;
     margin-left: auto;
@@ -55,5 +67,11 @@
 
   .nav-bar__title {
     margin-bottom: 0;
+  }
+
+  .nav-bar__logout {
+    margin-left: 20px;
+    padding: 14px 20px;
+    margin-top: 0;
   }
 }
