@@ -13,9 +13,3 @@
     rgb(248, 234, 34, 0.9)
   );
 }
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
