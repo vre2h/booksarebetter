@@ -3,7 +3,7 @@ import Movies from '../components/Movies/Movies';
 
 const mapStateToProps = state => {
   return {
-    movies: state.moviesInfo.moviesByGenre.movies,
+    movies: state.moviesInfo.moviesByGenre,
   };
 };
 

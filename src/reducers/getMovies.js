@@ -8,10 +8,8 @@ import {
 
 const initialState = {
   selectedGenre: 'popular',
-  moviesByGenre: {
-    isFetching: false,
-    movies: [],
-  },
+  isFetching: false,
+  movies: [],
 };
 
 const selectedGenre = (state = initialState.selectedGenre, action) => {
@@ -23,26 +21,40 @@ const selectedGenre = (state = initialState.selectedGenre, action) => {
   }
 };
 
-const moviesByGenre = (state = initialState.moviesByGenre, action) => {
+const moviesByGenre = (state = initialState.movies, action) => {
   switch (action.type) {
-    case REQUEST_MOVIES:
-      return {
-        ...state,
-        isFetching: true,
-      };
     case RECEIVE_MOVIES:
-      return {
-        isFetching: false,
-        movies: action.payload.movies,
-      };
-    case FAILURE_MOVIES:
-      return {
-        isFetching: false,
-        err: action.err,
-      };
+      return action.payload.movies;
     default:
       return state;
   }
 };
 
-export default combineReducers({ selectedGenre, moviesByGenre });
+const isFetching = (state = initialState.isFetching, action) => {
+  switch (action.type) {
+    case REQUEST_MOVIES:
+      return true;
+    case RECEIVE_MOVIES:
+      return false;
+    case FAILURE_MOVIES:
+      return false;
+    default:
+      return state;
+  }
+};
+
+const error = (state = null, action) => {
+  switch (action.type) {
+    case FAILURE_MOVIES:
+      return action.err;
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  selectedGenre,
+  moviesByGenre,
+  isFetching,
+  error,
+});
