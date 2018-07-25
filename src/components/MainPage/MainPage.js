@@ -9,10 +9,10 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <NavBar />
         <MoviesContainer />
-      </div>
+      </React.Fragment>
     );
   }
 }
