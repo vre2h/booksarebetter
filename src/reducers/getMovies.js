@@ -3,20 +3,20 @@ import {
   FAILURE_MOVIES,
   REQUEST_MOVIES,
   RECEIVE_MOVIES,
-  SELECT_GENRE,
+  MOVIES_SELECTOR,
   RECEIVE_GENRES_BY_ID,
 } from '../actions/constants';
 
 const initialState = {
-  selectedGenre: 'popular',
+  moviesSelector: 'popular',
   isFetching: false,
   movies: [],
 };
 
-const selectedGenre = (state = initialState.selectedGenre, action) => {
+const moviesSelector = (state = initialState.moviesSelector, action) => {
   switch (action.type) {
-    case SELECT_GENRE:
-      return action.payload.selectedGenre;
+    case MOVIES_SELECTOR:
+      return action.payload.moviesSelector;
     default:
       return state;
   }
@@ -63,7 +63,7 @@ const genresById = (state = null, action) => {
 };
 
 export default combineReducers({
-  selectedGenre,
+  moviesSelector,
   moviesByGenre,
   genresById,
   isFetching,
