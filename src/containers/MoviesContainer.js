@@ -6,6 +6,7 @@ const mapStateToProps = state => {
     movies: state.moviesInfo.moviesByGenre,
     genresById: state.moviesInfo.genresById,
     genreName: state.moviesInfo.moviesSelector.toUpperCase(),
+    isFetching: state.moviesInfo.isFetching,
   };
 };
 
