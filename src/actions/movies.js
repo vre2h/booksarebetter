@@ -7,11 +7,23 @@ import {
   RECEIVE_GENRES_BY_ID,
 } from './constants';
 
-// helper fn to avoid repeating fetch in if/else
-const fetchMovies = dispatch => (movieSelector, page, listOfGenreById) => {
-  fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&page=${page}`
-  )
+/*
+ * helper fn to avoid repeating fetch in if/else
+ * also it contains object which corresponds movie selector
+ * with url for fetching
+ */
+const fetchMovies = dispatch => (
+  movieSelector,
+  page,
+  searchText = '',
+  listOfGenreById
+) => {
+  const urls = {
+    popular: `https://api.themoviedb.org/3/movie/popular?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&page=${page}`,
+    search: `https://api.themoviedb.org/3/search/movie?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&query=${searchText}&include_adult=true`,
+  };
+
+  fetch(urls[movieSelector])
     .then(r => r.json())
     .then(data => dispatch(receiveMovies(movieSelector, data, listOfGenreById)))
     .catch(err => dispatch(failureMovies(err)));
