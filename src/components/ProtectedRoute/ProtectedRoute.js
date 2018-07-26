@@ -8,7 +8,7 @@ class ProtectedRoute extends React.Component {
       <Route
         render={props =>
           this.props.isAuth ? (
-            <MainPageContainer />
+            <MainPageContainer {...props} />
           ) : (
             <Redirect
               to={{

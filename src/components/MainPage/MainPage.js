@@ -4,13 +4,14 @@ import NavBarContainer from '../../containers/NavBarContainer';
 
 class MainPage extends React.Component {
   componentDidMount() {
-    this.props.fetchData();
+    this.props.fetchData('popular', 1, undefined, this.props.genresById);
   }
 
   render() {
+    const { changePathOnSearch } = this.props;
     return (
       <React.Fragment>
-        <NavBarContainer />
+        <NavBarContainer changePathOnSearch={changePathOnSearch} />
         <MoviesContainer />
       </React.Fragment>
     );
