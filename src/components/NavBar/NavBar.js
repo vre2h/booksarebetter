@@ -13,7 +13,7 @@ class NavBar extends React.Component {
   handleChange(e) {
     const value = e.target.value.trim();
     if (value !== '') {
-      // this.props.changePathOnSearch(value);
+      this.props.changePathOnSearch(`search/${value}`);
       this.props.fetchData(
         'search',
         undefined,
@@ -21,6 +21,7 @@ class NavBar extends React.Component {
         this.props.genresById
       );
     } else {
+      this.props.changePathOnSearch('');
       this.props.fetchData(
         'popular',
         undefined,
