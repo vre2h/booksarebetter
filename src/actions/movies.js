@@ -6,6 +6,7 @@ import {
   REQUEST_GENRES_BY_ID,
   RECEIVE_GENRES_BY_ID,
 } from './constants';
+import { updSearchField } from '.';
 
 /*
  * helper fn to avoid repeating fetch in if/else
@@ -22,6 +23,10 @@ const fetchMovies = dispatch => (
     popular: `https://api.themoviedb.org/3/movie/popular?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&page=${page}`,
     search: `https://api.themoviedb.org/3/search/movie?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&query=${searchText}&include_adult=true`,
   };
+
+  if (movieSelector === 'search') {
+    updSearchField(searchText);
+  }
 
   fetch(urls[movieSelector])
     .then(r => r.json())

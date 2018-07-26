@@ -12,21 +12,13 @@ class NavBar extends React.Component {
 
   handleChange(e) {
     const value = e.target.value.trim();
-    const {
-      updSearchField,
-      changePathOnSearch,
-      fetchData,
-      genresById,
-    } = this.props;
-
-    // action
-    updSearchField(value);
+    const { changePathOnSearch, fetchData, genresById } = this.props;
 
     if (value !== '') {
       // change url
       changePathOnSearch(`search/${value}`);
 
-      // fetch movies
+      // fetch movies action
       fetchData('search', undefined, e.target.value, genresById);
     } else {
       changePathOnSearch('');
