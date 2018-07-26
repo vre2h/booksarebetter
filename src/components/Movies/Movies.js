@@ -1,17 +1,14 @@
 import React from 'react';
-
+import Movie from '../Movie';
 const Movies = ({ movies, genresById }) => {
-  return movies.map(({ id, title, genre_ids, poster_path }) => {
-    const imgUrl = `https://image.tmdb.org/t/p/w200/${poster_path}`;
-
-    return (
-      <div key={id}>
-        <p>{title}</p>
-        <img src={imgUrl} alt="Sorry, we can't upload!" />
-        <ul>{genre_ids.map(id => <li key={id}>{genresById[id]}</li>)}</ul>
-      </div>
-    );
-  });
+  return (
+    <div className="movies-wrapper">
+      {' '}
+      {movies.map(movieInfo => {
+        return <Movie movieInfo={movieInfo} genresById={genresById} />;
+      })}
+    </div>
+  );
 };
 
 export default Movies;
