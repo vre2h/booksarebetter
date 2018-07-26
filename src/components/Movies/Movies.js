@@ -10,15 +10,21 @@ const Movies = ({ movies, genresById, genreName, isFetching }) => {
         <h2>Loading...</h2>
       ) : (
         <div className="movies">
-          {movies.map(movieInfo => {
-            return (
-              <Movie
-                key={movieInfo.id}
-                movieInfo={movieInfo}
-                genresById={genresById}
-              />
-            );
-          })}
+          {movies.length !== 0 ? (
+            movies.map(movieInfo => {
+              return (
+                <Movie
+                  key={movieInfo.id}
+                  movieInfo={movieInfo}
+                  genresById={genresById}
+                />
+              );
+            })
+          ) : (
+            <h3>
+              <strong>Holy guacamole!</strong> There is no post with your input!
+            </h3>
+          )}
         </div>
       )}
     </div>
