@@ -123,6 +123,13 @@
   -o-animation: blinkRed 0.5s infinite;
   animation: blinkRed 0.5s infinite;
 
+  cursor: pointer;
+  transition: all 0.5s;
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+
   font-size: 10px;
   color: #fff;
   text-align: center;
