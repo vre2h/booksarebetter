@@ -16,4 +16,10 @@
   line-height: 1;
   font-family: 'Amatic SC', cursive;
   color: #cc9387;
+  cursor: pointer;
+  transition: all 0.5s;
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
 }
