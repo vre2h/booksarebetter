@@ -28,7 +28,7 @@
   user-select: none;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 540px) {
   .movies {
     justify-content: space-between;
     align-items: center;
