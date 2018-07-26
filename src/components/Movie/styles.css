@@ -35,11 +35,11 @@
   height: 200px;
 
   background: rgba(54, 84, 99, 0.75);
+  transition: all 0.5s;
 }
 
 .movie:hover .movie-desc {
   bottom: 0;
-  transition: all 0.5s;
 }
 
 .movie-genres {
