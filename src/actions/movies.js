@@ -40,7 +40,7 @@ const fetchMovies = dispatch => (
  */
 const requestMovies = (selector = 'popular', page = 1, listOfGenreById) => {
   return dispatch => {
-    dispatch(moviesSelector);
+    dispatch(moviesSelector(selector));
     dispatch({ type: REQUEST_MOVIES });
     const dispatchedFetchMovies = fetchMovies(dispatch);
     let genresById = {};
