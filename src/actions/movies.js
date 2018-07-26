@@ -6,31 +6,21 @@ import {
   REQUEST_GENRES_BY_ID,
   RECEIVE_GENRES_BY_ID,
 } from './constants';
-import { updSearchField } from '.';
 
 /*
  * helper fn to avoid repeating fetch in if/else
  * also it contains object which corresponds movie selector
  * with url for fetching
  */
-const fetchMovies = dispatch => (
-  movieSelector,
-  page,
-  searchText = '',
-  listOfGenreById
-) => {
+const fetchMovies = dispatch => (movieSelector, page, searchText = '') => {
   const urls = {
     popular: `https://api.themoviedb.org/3/movie/popular?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&page=${page}`,
     search: `https://api.themoviedb.org/3/search/movie?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&query=${searchText}&include_adult=true`,
   };
 
-  if (movieSelector === 'search') {
-    updSearchField(searchText);
-  }
-
   fetch(urls[movieSelector])
     .then(r => r.json())
-    .then(data => dispatch(receiveMovies(movieSelector, data, listOfGenreById)))
+    .then(data => dispatch(receiveMovies(movieSelector, data)))
     .catch(err => dispatch(failureMovies(err)));
 };
 
@@ -43,7 +33,12 @@ const fetchMovies = dispatch => (
  * After we're saving it in the store.
  * And we're requesting it only once because it's not change
  */
-const requestMovies = (selector = 'popular', page = 1, listOfGenreById) => {
+const requestMovies = (
+  selector = 'popular',
+  page = 1,
+  text,
+  listOfGenreById
+) => {
   return dispatch => {
     dispatch(moviesSelector(selector));
     dispatch({ type: REQUEST_MOVIES });
@@ -51,7 +46,7 @@ const requestMovies = (selector = 'popular', page = 1, listOfGenreById) => {
     let genresById = {};
 
     if (listOfGenreById) {
-      dispatchedFetchMovies(selector, page, listOfGenreById);
+      dispatchedFetchMovies(selector, page, text, listOfGenreById);
     } else {
       dispatch({ type: REQUEST_GENRES_BY_ID });
       fetch(
@@ -64,7 +59,7 @@ const requestMovies = (selector = 'popular', page = 1, listOfGenreById) => {
             {}
           );
           dispatch(receiveGenresById(genresById));
-          return dispatchedFetchMovies(selector, page, listOfGenreById);
+          return dispatchedFetchMovies(selector, page, text, listOfGenreById);
         });
     }
   };

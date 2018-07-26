@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar/NavBar';
-import { logOut, requestMovies } from '../actions';
+import { logOut, requestMovies, updSearchField } from '../actions';
 
 class NavBarContainer extends React.Component {
   render() {
@@ -12,6 +12,7 @@ class NavBarContainer extends React.Component {
         changePathOnSearch={changePathOnSearch}
         logOut={logOut}
         fetchData={fetchData}
+        updSearchField={updSearchField}
         {...rest}
       />
     );
@@ -30,6 +31,7 @@ NavBarContainer = connect(
   {
     logOut,
     fetchData: requestMovies,
+    updSearchField,
   }
 )(NavBarContainer);
 
