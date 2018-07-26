@@ -1,7 +1,7 @@
 .movies-wrapper {
   display: flex;
   flex-direction: column;
-  margin-top: 120px;
+  margin-top: 60px;
   padding: 0 40px;
   color: #ccc;
 }
@@ -37,5 +37,11 @@
   .movies {
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .movies-wrapper {
+    margin-top: 120px;
   }
 }
