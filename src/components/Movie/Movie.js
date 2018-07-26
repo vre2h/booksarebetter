@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from 'react-bootstrap';
+import { Badge, Button, Glyphicon } from 'react-bootstrap';
 import './styles.css';
 
 const Movie = props => {
@@ -9,7 +9,11 @@ const Movie = props => {
 
   return (
     <div key={id} className="movie">
-      <div className="movie-shadow" />
+      <div className="movie-top-overlay">
+        <Button bsSize="small">
+          <Glyphicon glyph="star" />
+        </Button>
+      </div>
       <img className="movie-img" src={imgUrl} alt="Sorry, we can't upload!" />
       <div className="movie-desc">
         {' '}
