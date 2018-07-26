@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FormControl } from 'react-bootstrap';
 import './styles.css';
 
@@ -33,7 +34,9 @@ class NavBar extends React.Component {
     const { logOut } = this.props;
     return (
       <div className="nav-bar">
-        <div className="nav-bar__title">Books are better</div>
+        <Link to="/">
+          <div className="nav-bar__title">Books are better</div>
+        </Link>
         <FormControl
           bsClass="nav-bar__search"
           type="text"
