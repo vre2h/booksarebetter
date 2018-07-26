@@ -4,6 +4,7 @@ import {
   REQUEST_MOVIES,
   RECEIVE_MOVIES,
   SELECT_GENRE,
+  RECEIVE_GENRES_BY_ID,
 } from '../actions/constants';
 
 const initialState = {
@@ -52,9 +53,19 @@ const error = (state = null, action) => {
   }
 };
 
+const genresById = (state = null, action) => {
+  switch (action.type) {
+    case RECEIVE_GENRES_BY_ID:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   selectedGenre,
   moviesByGenre,
+  genresById,
   isFetching,
   error,
 });
