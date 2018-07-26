@@ -1,0 +1,19 @@
+.movies-wrapper {
+  margin-top: 120px;
+  padding: 0 40px;
+  color: #ccc;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.movies-title {
+  font-size: 60px;
+  line-height: 1;
+  font-family: 'Amatic SC', cursive;
+  color: #cc9387;
+}
