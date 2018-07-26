@@ -9,12 +9,13 @@
 .movies {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .movies-title {
-  margin-left: 20px;
+  margin: 0;
+  align-self: flex-start;
   font-size: 60px;
   line-height: 1;
   font-family: 'Amatic SC', cursive;
@@ -25,4 +26,11 @@
   -moz-user-select: none; /* Firefox all */
   -ms-user-select: none; /* IE 10+ */
   user-select: none;
+}
+
+@media screen and (min-width: 600px) {
+  .movies {
+    justify-content: space-between;
+    align-items: center;
+  }
 }
