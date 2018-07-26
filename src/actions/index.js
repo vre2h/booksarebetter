@@ -6,6 +6,7 @@ import {
   selectGenre,
 } from './movies';
 import { loginSuccess, logOut } from './login';
+import { updSearchField } from './search';
 
 export {
   loginSuccess,
@@ -15,4 +16,5 @@ export {
   receiveGenresById,
   selectGenre,
   requestMovies,
+  updSearchField,
 };
