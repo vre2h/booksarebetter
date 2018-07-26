@@ -15,6 +15,7 @@
 }
 
 .movie-title {
+  align-self: flex-start;
   height: 70px;
   margin: 0;
   margin-bottom: 10px;
@@ -22,6 +23,18 @@
   color: #fff;
   font-weight: 700;
   font-size: 16px;
+}
+
+.movie-top-overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  top: -100px;
+  transition: all 0.5s;
+  background: rgba(108, 121, 107, 0.75);
 }
 
 .movie-desc {
@@ -40,6 +53,10 @@
 
 .movie:hover .movie-desc {
   bottom: 0;
+}
+
+.movie:hover .movie-top-overlay {
+  top: 0;
 }
 
 .movie-genres {
