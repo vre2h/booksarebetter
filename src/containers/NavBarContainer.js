@@ -1,17 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar/NavBar';
-import { logOut } from '../actions';
-import { requestMovies } from '../actions';
+import { logOut, requestMovies, updSearchField } from '../actions';
 
 class NavBarContainer extends React.Component {
   render() {
-    const { changePathOnSearch, logOut, fetchData, ...rest } = this.props;
+    const {
+      changePathOnSearch,
+      logOut,
+      fetchData,
+      updSearchField,
+      ...rest
+    } = this.props;
+
     return (
       <NavBar
         changePathOnSearch={changePathOnSearch}
         logOut={logOut}
         fetchData={fetchData}
+        updSearchField={updSearchField}
+        {...rest}
       />
     );
   }
@@ -20,6 +28,7 @@ class NavBarContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     genresById: state.moviesInfo.genresById,
+    search: state.search,
   };
 };
 
@@ -28,6 +37,7 @@ NavBarContainer = connect(
   {
     logOut,
     fetchData: requestMovies,
+    updSearchField,
   }
 )(NavBarContainer);
 

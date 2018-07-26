@@ -12,27 +12,31 @@ class NavBar extends React.Component {
 
   handleChange(e) {
     const value = e.target.value.trim();
+    const {
+      updSearchField,
+      changePathOnSearch,
+      fetchData,
+      genresById,
+    } = this.props;
+
+    // action
+    updSearchField(value);
+
     if (value !== '') {
-      this.props.changePathOnSearch(`search/${value}`);
-      this.props.fetchData(
-        'search',
-        undefined,
-        e.target.value,
-        this.props.genresById
-      );
+      // change url
+      changePathOnSearch(`search/${value}`);
+
+      // fetch movies
+      fetchData('search', undefined, e.target.value, genresById);
     } else {
-      this.props.changePathOnSearch('');
-      this.props.fetchData(
-        'popular',
-        undefined,
-        undefined,
-        this.props.genresById
-      );
+      changePathOnSearch('');
+      fetchData('popular', undefined, undefined, genresById);
     }
   }
 
   render() {
-    const { logOut } = this.props;
+    const { logOut, search } = this.props;
+
     return (
       <div className="nav-bar">
         <Link to="/">
@@ -43,6 +47,7 @@ class NavBar extends React.Component {
           type="text"
           placeholder="Search"
           onChange={this.handleChange}
+          value={search}
         />
         <button onClick={logOut} className="nav-bar__logout">
           Log Out
