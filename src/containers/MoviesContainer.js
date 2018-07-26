@@ -4,6 +4,7 @@ import Movies from '../components/Movies/Movies';
 const mapStateToProps = state => {
   return {
     movies: state.moviesInfo.moviesByGenre,
+    genresById: state.moviesInfo.genresById,
   };
 };
 
