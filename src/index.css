@@ -12,4 +12,6 @@ body {
   background-repeat: no-repeat;
 
   font-family: 'Merriweather', serif;
+
+  overflow-x: hidden;
 }
