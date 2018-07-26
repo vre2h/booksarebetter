@@ -56,7 +56,7 @@ const error = (state = null, action) => {
 const genresById = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_GENRES_BY_ID:
-      return action.payload;
+      return action.payload.genresById;
     default:
       return state;
   }
