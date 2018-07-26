@@ -8,7 +8,7 @@ const Movies = ({ movies, genresById }) => {
       <div key={id}>
         <p>{title}</p>
         <img src={imgUrl} alt="Sorry, we can't upload!" />
-        <ul>{genre_ids.map(id => <li>{genresById[id]}</li>)}</ul>
+        <ul>{genre_ids.map(id => <li key={id}>{genresById[id]}</li>)}</ul>
       </div>
     );
   });
