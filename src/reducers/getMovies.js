@@ -6,6 +6,7 @@ import {
   MOVIES_SELECTOR,
   RECEIVE_GENRES_BY_ID,
   RECEIVE_SEARCH_MOVIES,
+  RECEIVE_MOVIES_FROM_SCROLL,
 } from '../actions/constants';
 
 const initialState = {
@@ -29,6 +30,8 @@ const moviesSelector = (state = initialState.moviesSelector, action) => {
 const moviesByGenre = (state = initialState.movies, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
+      return action.payload.movies;
+    case RECEIVE_MOVIES_FROM_SCROLL:
       return [...state, ...action.payload.movies];
     case RECEIVE_SEARCH_MOVIES:
       return [];
