@@ -15,8 +15,7 @@ class Movie extends React.Component {
 
     const { addFav, removeFav, isFav } = this.props;
     const toggler = isFav ? removeFav : addFav;
-
-    toggler();
+    toggler(id);
   }
 
   render() {

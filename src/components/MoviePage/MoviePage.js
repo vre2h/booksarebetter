@@ -6,11 +6,18 @@ class MoviePage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(id) {
+    const { addFav, removeFav, isFav } = this.props;
+    const toggler = isFav ? removeFav : addFav;
+
+    toggler(id);
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, isFav, id } = this.props;
     const {
       poster_path,
       adult,
@@ -44,9 +51,21 @@ class MoviePage extends React.Component {
           <div className="movie-page__desc">
             <div className="movie-page__top">
               <h1 className="movie-page__title">{original_title}</h1>
-              <Button className="movie-page__fav">
-                Add Favorites
-                <Glyphicon glyph="star" />
+              <Button
+                className="movie-page__fav"
+                onClick={this.handleClick.bind(this, id)}
+              >
+                {isFav ? (
+                  <React.Fragment>
+                    Remove Favorite
+                    <Glyphicon glyph="minus" />
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    Add Favorite
+                    <Glyphicon glyph="star" />
+                  </React.Fragment>
+                )}
               </Button>
             </div>
             <div className="movie-page__tags">
