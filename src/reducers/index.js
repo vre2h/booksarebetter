@@ -4,6 +4,7 @@ import currentUser from './currentUser';
 import isAuth from './isAuth';
 import movies from './getMovies';
 import search from './search';
+import movie from './getMovie';
 
 export default combineReducers({
   form: reduxFormReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   currentUser,
   moviesInfo: movies,
   search,
+  movieInfo: movie,
 });
