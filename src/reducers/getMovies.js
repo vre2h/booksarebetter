@@ -14,6 +14,7 @@ const initialState = {
   movies: [],
   page: 1,
   totalPages: 0,
+  moviesBySearch: [],
 };
 
 const moviesSelector = (state = initialState.moviesSelector, action) => {
@@ -28,9 +29,20 @@ const moviesSelector = (state = initialState.moviesSelector, action) => {
 const moviesByGenre = (state = initialState.movies, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
-      return [...action.payload.movies];
+      return [...state, ...action.payload.movies];
+    case RECEIVE_SEARCH_MOVIES:
+      return [];
+    default:
+      return state;
+  }
+};
+
+const moviesBySearch = (state = initialState.moviesBySearch, action) => {
+  switch (action.type) {
     case RECEIVE_SEARCH_MOVIES:
       return action.payload.movies;
+    case RECEIVE_MOVIES:
+      return [];
     default:
       return state;
   }
@@ -90,6 +102,7 @@ const genresById = (state = null, action) => {
 export default combineReducers({
   moviesSelector,
   moviesByGenre,
+  moviesBySearch,
   genresById,
   isFetching,
   page,
