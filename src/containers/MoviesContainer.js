@@ -12,7 +12,7 @@ class MoviesContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchData('popular', 1, undefined, this.props.genresById);
+    this.props.fetchData('popular', 1, undefined, this.props.genresById, false);
     window.addEventListener('scroll', this.onScroll, false);
   }
 
@@ -28,7 +28,13 @@ class MoviesContainer extends React.Component {
       currFetchPage === this.page
     ) {
       this.page += 1;
-      this.props.fetchData('popular', currFetchPage + 1, undefined, genresById);
+      this.props.fetchData(
+        'popular',
+        currFetchPage + 1,
+        undefined,
+        genresById,
+        true
+      );
     }
   }
 
