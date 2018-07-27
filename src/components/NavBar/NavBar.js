@@ -23,11 +23,11 @@ class NavBar extends React.Component {
 
     if (value !== '') {
       // change url
-      changePathOnSearch(`home/search/${value}`);
+      changePathOnSearch(`movies/search/${value}`);
       // fetch movies action
       fetchData('search', undefined, e.target.value, genresById);
     } else {
-      changePathOnSearch('home');
+      changePathOnSearch('movies');
     }
   }
 
@@ -36,7 +36,7 @@ class NavBar extends React.Component {
 
     return (
       <div className="nav-bar">
-        <Link to="/home">
+        <Link to="/movies">
           <div className="nav-bar__title">Books are better</div>
         </Link>
         <FormControl

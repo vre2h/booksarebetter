@@ -12,9 +12,9 @@ class MainPage extends React.Component {
       <React.Fragment>
         <NavBarContainer changePathOnSearch={changePathOnSearch} />
         <Switch>
-          <Route exact path="/home" component={MoviesContainer} />
+          <Route exact path="/movies" component={MoviesContainer} />
           <Route
-            path="/home/search/:searcher"
+            path="/movies/search/:searcher"
             render={props => <MoviesSearchContainer {...props} />}
           />
           <Route render={() => <h1>Not found</h1>} />

@@ -9,7 +9,7 @@ const Movie = props => {
   const imgUrl = `https://image.tmdb.org/t/p/w200/${poster_path}`;
 
   return (
-    <Link to={`home/movie/${id}`}>
+    <Link to={`movies/movie/${id}`}>
       <div className="movie">
         <div className="movie-top-overlay">
           <Button bsSize="small">
