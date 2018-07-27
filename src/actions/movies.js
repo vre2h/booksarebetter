@@ -54,7 +54,7 @@ const requestMovies = (
     } else {
       dispatch({ type: REQUEST_GENRES_BY_ID });
       fetch(
-        '  https://api.themoviedb.org/3/genre/movie/list?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US'
+        'https://api.themoviedb.org/3/genre/movie/list?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US'
       )
         .then(r => r.json())
         .then(d => {
@@ -93,6 +93,8 @@ const receiveMovies = (moviesSelector, movies) => ({
   payload: {
     moviesSelector,
     movies: movies.results,
+    page: movies.page,
+    totalPages: movies.total_pages,
   },
 });
 
