@@ -39,6 +39,11 @@ class NavBar extends React.Component {
         <Link to="/movies">
           <div className="nav-bar__title">Books are better</div>
         </Link>
+        <div className="nav-bar__items">
+          <Link to="/movies/favorites">
+            <div className="nav-bar__item">Favorites</div>
+          </Link>
+        </div>
         <FormControl
           bsClass="nav-bar__search"
           type="text"
