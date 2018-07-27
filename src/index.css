@@ -7,8 +7,7 @@ body {
   padding: 0;
 
   background: url(./img/cinema.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: contain;
   background-attachment: fixed;
 
   font-family: 'Merriweather', serif;
