@@ -1,5 +1,25 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import Movies from '../components/Movies/Movies';
+import { requestMovies } from '../actions';
+
+class MoviesContainer extends React.Component {
+  componentDidMount() {
+    this.props.fetchData('popular', 1, undefined, this.props.genresById);
+  }
+
+  render() {
+    const { movies, genresById, genreName, isFetching } = this.props;
+    return (
+      <Movies
+        movies={movies}
+        genresById={genresById}
+        genreName={genreName}
+        isFetching={isFetching}
+      />
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {
@@ -10,7 +30,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
+MoviesContainer = connect(
   mapStateToProps,
-  null
-)(Movies);
+  {
+    fetchData: requestMovies,
+  }
+)(MoviesContainer);
+
+export default MoviesContainer;
