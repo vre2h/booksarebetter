@@ -12,6 +12,7 @@ const Movies = ({ movies, genresById, genreName, isFetching }) => {
             return (
               <MovieContainer
                 key={movieInfo.id}
+                id={movieInfo.id}
                 movieInfo={movieInfo}
                 genresById={genresById}
               />
