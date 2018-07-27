@@ -30,7 +30,7 @@ class MoviePageContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   movie: state.movieInfo.currentMovie,
-  favs: state.favorites,
+  favs: state.favorites.favoriteIds,
 });
 
 const mapDispatchToProps = dispatch => ({

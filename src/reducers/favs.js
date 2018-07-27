@@ -1,6 +1,7 @@
+import { combineReducers } from 'redux';
 import { ADD_FAV, REMOVE_FAV } from '../actions/constants';
 
-const favorites = (state = [], action) => {
+const favoriteIds = (state = [], action) => {
   switch (action.type) {
     case ADD_FAV: {
       return state.concat(action.payload.id);
@@ -13,4 +14,4 @@ const favorites = (state = [], action) => {
   }
 };
 
-export default favorites;
+export default combineReducers({ favoriteIds });
