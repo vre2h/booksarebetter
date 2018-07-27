@@ -27,8 +27,7 @@ class NavBar extends React.Component {
       // fetch movies action
       fetchData('search', undefined, e.target.value, genresById);
     } else {
-      changePathOnSearch('home/');
-      fetchData('popular', undefined, undefined, genresById);
+      changePathOnSearch('home');
     }
   }
 
