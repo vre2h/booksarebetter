@@ -1,5 +1,5 @@
 import React from 'react';
-import Movie from '../Movie';
+import MovieContainer from '../../containers/MovieContainer';
 import './styles.css';
 
 const Movies = ({ movies, genresById, genreName, isFetching }) => {
@@ -10,7 +10,7 @@ const Movies = ({ movies, genresById, genreName, isFetching }) => {
         {movies.length !== 0 || isFetching ? (
           movies.map(movieInfo => {
             return (
-              <Movie
+              <MovieContainer
                 key={movieInfo.id}
                 movieInfo={movieInfo}
                 genresById={genresById}
