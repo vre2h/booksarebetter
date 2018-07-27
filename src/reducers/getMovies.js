@@ -27,7 +27,7 @@ const moviesSelector = (state = initialState.moviesSelector, action) => {
 const moviesByGenre = (state = initialState.movies, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
-      return action.payload.movies;
+      return [...state, ...action.payload.movies];
     default:
       return state;
   }
