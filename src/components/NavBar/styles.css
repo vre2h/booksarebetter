@@ -53,14 +53,36 @@
   display: block;
   padding: 10px;
   margin-top: 20px;
+
   background: none;
   border: none;
-  color: #ccc;
-  font-size: 16px;
+
   transition: all 0.5s;
+
+  font-size: 16px;
+  line-height: 1;
+  color: #ccc;
 }
 
 .nav-bar__logout:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.nav-bar__item {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  transition: all 0.5s;
+
+  font-size: 16px;
+  line-height: 1;
+  color: #ccc;
+  text-align: center;
+}
+
+.nav-bar__item:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -90,5 +112,14 @@
     margin-left: 20px;
     padding: 14px 20px;
     margin-top: 0;
+  }
+
+  .nav-bar__items {
+    margin-left: 50px;
+  }
+
+  .nav-bar__item {
+    margin-bottom: 0;
+    padding: 14px 20px;
   }
 }
