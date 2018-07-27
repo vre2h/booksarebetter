@@ -6,9 +6,9 @@ import ProtectedRouteContainer from '../../containers/ProtectedRouteContainer';
 const App = () => (
   <React.Fragment>
     <Switch>
-      <Route exact path="/" component={ProtectedRouteContainer} />
+      <Route path="/home" component={ProtectedRouteContainer} />
       <Route path="/login" component={LoginForm} />
-      <Route path="/search/" component={ProtectedRouteContainer} />
+      <Route render={() => <h1>Not Found</h1>} />
     </Switch>
   </React.Fragment>
 );
