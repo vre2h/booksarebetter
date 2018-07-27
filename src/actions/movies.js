@@ -6,6 +6,7 @@ import {
   REQUEST_GENRES_BY_ID,
   RECEIVE_GENRES_BY_ID,
 } from './constants';
+import { updSearchField } from './search';
 
 /*
  * helper fn to avoid repeating fetch in if/else
@@ -40,6 +41,9 @@ const requestMovies = (
   listOfGenreById
 ) => {
   return dispatch => {
+    if (selector !== 'search') {
+      dispatch(updSearchField(''));
+    }
     dispatch(moviesSelector(selector));
     dispatch({ type: REQUEST_MOVIES });
     const dispatchedFetchMovies = fetchMovies(dispatch);
