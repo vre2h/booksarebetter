@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import MoviesContainer from '../../containers/MoviesContainer';
 import NavBarContainer from '../../containers/NavBarContainer';
 import MoviesSearchContainer from '../../containers/MoviesSearchContainer';
+import MoviePageContainer from '../../containers/MoviePageContainer';
 
 class MainPage extends React.Component {
   render() {
@@ -16,6 +17,10 @@ class MainPage extends React.Component {
           <Route
             path="/movies/search/:searcher"
             render={props => <MoviesSearchContainer {...props} />}
+          />
+          <Route
+            path="/movies/movie/:id"
+            render={props => <MoviePageContainer {...props} />}
           />
           <Route render={() => <h1>Not found</h1>} />
         </Switch>
