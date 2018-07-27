@@ -12,7 +12,7 @@ const Movies = ({ movies, genresById, genreName, isFetching }) => {
             return (
               <MovieContainer
                 key={movieInfo.id}
-                id={movieInfo.id}
+                id={movieInfo.id.toString()}
                 movieInfo={movieInfo}
                 genresById={genresById}
               />
