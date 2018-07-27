@@ -8,7 +8,7 @@ const App = () => (
     <Switch>
       <Route path="/home" component={ProtectedRouteContainer} />
       <Route path="/login" component={LoginForm} />
-      <Route render={() => <h1>Not Found</h1>} />
+      <Route render={() => <h1>Not Found App</h1>} />
     </Switch>
   </React.Fragment>
 );
