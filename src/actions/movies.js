@@ -5,6 +5,7 @@ import {
   MOVIES_SELECTOR,
   REQUEST_GENRES_BY_ID,
   RECEIVE_GENRES_BY_ID,
+  RECEIVE_SEARCH_MOVIES,
 } from './constants';
 import { updSearchField } from './search';
 
@@ -18,10 +19,12 @@ const fetchMovies = dispatch => (movieSelector, page, searchText = '') => {
     popular: `https://api.themoviedb.org/3/movie/popular?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&page=${page}`,
     search: `https://api.themoviedb.org/3/search/movie?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&query=${searchText}&include_adult=true`,
   };
+  const receivedFrom =
+    movieSelector === 'search' ? receiveSearchMovies : receiveMovies;
 
   fetch(urls[movieSelector])
     .then(r => r.json())
-    .then(data => dispatch(receiveMovies(movieSelector, data)))
+    .then(data => dispatch(receivedFrom(movieSelector, data)))
     .catch(err => dispatch(failureMovies(err)));
 };
 
@@ -88,13 +91,23 @@ const failureMovies = err => ({
   err,
 });
 
-const receiveMovies = (moviesSelector, movies) => ({
-  type: RECEIVE_MOVIES,
+const receiveMovies = (moviesSelector, movies) => {
+  return {
+    type: RECEIVE_MOVIES,
+    payload: {
+      moviesSelector,
+      movies: movies.results,
+      page: movies.page,
+      totalPages: movies.total_pages,
+    },
+  };
+};
+
+const receiveSearchMovies = (moviesSelector, movies) => ({
+  type: RECEIVE_SEARCH_MOVIES,
   payload: {
     moviesSelector,
     movies: movies.results,
-    page: movies.page,
-    totalPages: movies.total_pages,
   },
 });
 

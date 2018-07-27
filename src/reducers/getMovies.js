@@ -5,13 +5,14 @@ import {
   RECEIVE_MOVIES,
   MOVIES_SELECTOR,
   RECEIVE_GENRES_BY_ID,
+  RECEIVE_SEARCH_MOVIES,
 } from '../actions/constants';
 
 const initialState = {
   moviesSelector: 'popular',
   isFetching: false,
   movies: [],
-  pages: 1,
+  page: 1,
   totalPages: 0,
 };
 
@@ -27,13 +28,15 @@ const moviesSelector = (state = initialState.moviesSelector, action) => {
 const moviesByGenre = (state = initialState.movies, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
-      return [...state, ...action.payload.movies];
+      return [...action.payload.movies];
+    case RECEIVE_SEARCH_MOVIES:
+      return action.payload.movies;
     default:
       return state;
   }
 };
 
-const page = (state = initialState.pages, action) => {
+const page = (state = initialState.page, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
       return action.payload.page;
@@ -56,6 +59,8 @@ const isFetching = (state = initialState.isFetching, action) => {
     case REQUEST_MOVIES:
       return true;
     case RECEIVE_MOVIES:
+      return false;
+    case RECEIVE_SEARCH_MOVIES:
       return false;
     case FAILURE_MOVIES:
       return false;
