@@ -6,6 +6,7 @@ import {
   REQUEST_GENRES_BY_ID,
   RECEIVE_GENRES_BY_ID,
   RECEIVE_SEARCH_MOVIES,
+  RECEIVE_MOVIES_FROM_SCROLL,
 } from './constants';
 import { updSearchField } from './search';
 
@@ -14,13 +15,25 @@ import { updSearchField } from './search';
  * also it contains object which corresponds movie selector
  * with url for fetching
  */
-const fetchMovies = dispatch => (movieSelector, page, searchText = '') => {
+const fetchMovies = dispatch => (
+  movieSelector,
+  page,
+  searchText = '',
+  listOfGenreById,
+  fromScroll
+) => {
   const urls = {
     popular: `https://api.themoviedb.org/3/movie/popular?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&page=${page}`,
     search: `https://api.themoviedb.org/3/search/movie?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&query=${searchText}&include_adult=true`,
   };
-  const receivedFrom =
-    movieSelector === 'search' ? receiveSearchMovies : receiveMovies;
+  let receivedFrom;
+  if (fromScroll) {
+    receivedFrom = receiveFromScroll;
+  } else if (movieSelector === 'search') {
+    receivedFrom = receiveSearchMovies;
+  } else {
+    receivedFrom = receiveMovies;
+  }
 
   fetch(urls[movieSelector])
     .then(r => r.json())
@@ -41,19 +54,22 @@ const requestMovies = (
   selector = 'popular',
   page = 1,
   text,
-  listOfGenreById
+  listOfGenreById,
+  fromScroll
 ) => {
   return dispatch => {
     if (selector !== 'search') {
       dispatch(updSearchField(''));
     }
+
     dispatch(moviesSelector(selector));
     dispatch({ type: REQUEST_MOVIES });
+
     const dispatchedFetchMovies = fetchMovies(dispatch);
     let genresById = {};
 
     if (listOfGenreById) {
-      dispatchedFetchMovies(selector, page, text, listOfGenreById);
+      dispatchedFetchMovies(selector, page, text, listOfGenreById, fromScroll);
     } else {
       dispatch({ type: REQUEST_GENRES_BY_ID });
       fetch(
@@ -105,6 +121,14 @@ const receiveMovies = (moviesSelector, movies) => {
 
 const receiveSearchMovies = (moviesSelector, movies) => ({
   type: RECEIVE_SEARCH_MOVIES,
+  payload: {
+    moviesSelector,
+    movies: movies.results,
+  },
+});
+
+const receiveFromScroll = (moviesSelector, movies) => ({
+  type: RECEIVE_MOVIES_FROM_SCROLL,
   payload: {
     moviesSelector,
     movies: movies.results,
