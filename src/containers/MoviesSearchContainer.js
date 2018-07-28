@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 class MoviesSearchContainer extends React.Component {
   componentDidMount() {
-    const { searcher } = this.props.match.params;
+    const searcher = this.props.location.search.slice(5);
     this.props.updSearchField(searcher);
     this.props.fetchData('search', undefined, searcher, this.props.genresById);
   }
@@ -38,7 +38,6 @@ class MoviesSearchContainer extends React.Component {
         genreName={genreName}
         isFetching={isFetching}
         movies={movies}
-        fromSearch={true}
       />
     );
   }

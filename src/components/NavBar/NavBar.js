@@ -30,7 +30,7 @@ class NavBar extends React.Component {
 
     if (value !== '') {
       // change url
-      changePathOnSearch(`movies/search/${value}`);
+      changePathOnSearch(`movies/search?key=${value}`);
       // fetch movies action
       fetchData('search', undefined, e.target.value, genresById);
     } else {

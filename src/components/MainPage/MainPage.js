@@ -25,7 +25,7 @@ class MainPage extends React.Component {
             render={() => <FavoritesContainer />}
           />
           <Route
-            path="/movies/search/:searcher"
+            path="/movies/search/"
             render={props => <MoviesSearchContainer {...props} />}
           />
           <Route
