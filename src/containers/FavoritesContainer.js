@@ -24,6 +24,7 @@ class FavoritesContainer extends React.Component {
 
   render() {
     const { movies, genresById, genreName, isFetching } = this.props;
+
     return (
       <div>
         <Movies
@@ -40,7 +41,7 @@ class FavoritesContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
   movies: state.favorites.movies || [],
   favoriteIds: state.favorites.favoriteIds,
-  genresById: state.moviesInfo.genresById || [],
+  genresById: state.moviesInfo.genresById,
   genreName: 'FAVORITES',
   isFetching: state.favorites.isFetching,
 });

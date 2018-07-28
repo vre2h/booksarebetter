@@ -27,8 +27,8 @@ class Movie extends React.Component {
   }
 
   render() {
-    const { movieInfo, genresById, isFav } = this.props;
-    const { id, title, genre_ids, poster_path } = movieInfo;
+    const { movieInfo, isFav } = this.props;
+    const { id, title, genres, poster_path } = movieInfo;
 
     return (
       <Link to={`movie/${id}`} replace>
@@ -50,10 +50,10 @@ class Movie extends React.Component {
             {' '}
             <p className="movie-title">{title}</p>
             <ul className="movie-genres">
-              {genre_ids &&
-                genre_ids.map(id => (
+              {genres &&
+                genres.map(({ id, name }) => (
                   <li className="movie-genres-item" key={id}>
-                    <Badge>{genresById[id]}</Badge>
+                    <Badge>{name}</Badge>
                   </li>
                 ))}
             </ul>
