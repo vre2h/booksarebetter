@@ -2,10 +2,11 @@ import { createStore, applyMiddleware } from 'redux';
 import throttle from 'lodash/throttle';
 import rootReducer from './reducer';
 import { loadState, saveState } from '../localStorage';
+import thunk from 'redux-thunk';
 
 const configureStore = () => {
-  const persistedState = loadState();
-  const middlewares = [];
+  const persistedState = loadState('booksarebetter');
+  const middlewares = [thunk];
 
   const store = createStore(
     rootReducer,
@@ -15,9 +16,14 @@ const configureStore = () => {
 
   store.subscribe(
     throttle(() => {
-      saveState({
-        todos: store.getState().todos,
-      });
+      saveState(
+        {
+          isAuth: store.getState().isAuth,
+          currentUser: store.getState().currentUser,
+          favorites: store.getState().favorites,
+        },
+        'booksarebetter'
+      );
     }, 1000)
   );
 
