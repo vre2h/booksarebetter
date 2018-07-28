@@ -41,7 +41,7 @@ const mapStateToProps = (state, ownProps) => ({
   movies: state.favorites.movies || [],
   favoriteIds: state.favorites.favoriteIds,
   genresById: state.moviesInfo.genresById || [],
-  genreName: 'favorites'.toUpperCase(),
+  genreName: 'FAVORITES',
   isFetching: state.favorites.isFetching,
 });
 

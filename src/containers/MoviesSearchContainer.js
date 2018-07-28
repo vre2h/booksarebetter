@@ -8,7 +8,7 @@ import { requestMovies, updSearchField } from '../actions';
 const mapStateToProps = state => {
   return {
     genresById: state.moviesInfo.genresById,
-    genreName: 'search'.toUpperCase(),
+    genreName: 'SEARCH',
     isFetching: state.moviesInfo.isFetching,
     movies: state.moviesInfo.moviesBySearch,
   };
