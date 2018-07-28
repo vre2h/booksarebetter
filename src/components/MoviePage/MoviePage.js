@@ -38,6 +38,9 @@ class MoviePage extends React.Component {
     return (
       <div className="movie-page__wrapper">
         <div className="movie-page">
+          <h1 className="movie-page__title movie-page__title-small">
+            {original_title}
+          </h1>
           <div className="movie-page__img">
             <img src={imgUrl} alt="Sorry, we can't upload.." />
             <div className="movie-page__status">
@@ -50,7 +53,9 @@ class MoviePage extends React.Component {
           </div>
           <div className="movie-page__desc">
             <div className="movie-page__top">
-              <h1 className="movie-page__title">{original_title}</h1>
+              <h1 className="movie-page__title movie-page__title-big">
+                {original_title}
+              </h1>
               <Button
                 className="movie-page__fav"
                 onClick={this.handleClick.bind(this, id)}
