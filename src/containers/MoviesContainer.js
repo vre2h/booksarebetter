@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Movies from '../components/Movies/Movies';
 import { requestMovies } from '../actions';
 import PropTypes from 'prop-types';
+import genreName from '../selectors/genreName';
 
 class MoviesContainer extends React.Component {
   constructor(props) {
@@ -68,7 +69,7 @@ const mapStateToProps = state => {
   return {
     movies: state.moviesInfo.moviesByGenre,
     genresById: state.moviesInfo.genresById,
-    genreName: state.moviesInfo.moviesSelector.toUpperCase(),
+    genreName: genreName(state),
     isFetching: state.moviesInfo.isFetching,
     currFetchPage: state.moviesInfo.page,
     totalFetchPages: state.moviesInfo.totalPages,
