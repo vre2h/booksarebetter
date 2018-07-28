@@ -24,7 +24,7 @@ class Movie extends React.Component {
     const imgUrl = `https://image.tmdb.org/t/p/w200/${poster_path}`;
 
     return (
-      <Link to={`movies/movie/${id}`}>
+      <Link to={`movie/${id}`} replace>
         <div className="movie">
           <div className="movie-top-overlay">
             <Button bsSize="small" onClick={this.handleClick.bind(this, id)}>
@@ -40,11 +40,12 @@ class Movie extends React.Component {
             {' '}
             <p className="movie-title">{title}</p>
             <ul className="movie-genres">
-              {genre_ids.map(id => (
-                <li className="movie-genres-item" key={id}>
-                  <Badge>{genresById[id]}</Badge>
-                </li>
-              ))}
+              {genre_ids &&
+                genre_ids.map(id => (
+                  <li className="movie-genres-item" key={id}>
+                    <Badge>{genresById[id]}</Badge>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
