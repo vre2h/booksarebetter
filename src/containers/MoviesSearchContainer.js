@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     genresById: state.moviesInfo.genresById,
     genreName: 'SEARCH',
     isFetching: state.moviesInfo.isFetching,
-    movies: state.moviesInfo.moviesBySearch,
+    movies: state.moviesInfo.moviesByGenre,
   };
 };
 

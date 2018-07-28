@@ -5,7 +5,6 @@ import {
   RECEIVE_MOVIES,
   MOVIES_SELECTOR,
   RECEIVE_GENRES_BY_ID,
-  RECEIVE_SEARCH_MOVIES,
   RECEIVE_MOVIES_FROM_SCROLL,
 } from '../actions/constants';
 
@@ -33,19 +32,6 @@ const moviesByGenre = (state = initialState.movies, action) => {
       return action.payload.movies;
     case RECEIVE_MOVIES_FROM_SCROLL:
       return [...state, ...action.payload.movies];
-    case RECEIVE_SEARCH_MOVIES:
-      return [];
-    default:
-      return state;
-  }
-};
-
-const moviesBySearch = (state = initialState.moviesBySearch, action) => {
-  switch (action.type) {
-    case RECEIVE_SEARCH_MOVIES:
-      return action.payload.movies;
-    case RECEIVE_MOVIES:
-      return [];
     default:
       return state;
   }
@@ -53,7 +39,7 @@ const moviesBySearch = (state = initialState.moviesBySearch, action) => {
 
 const page = (state = initialState.page, action) => {
   switch (action.type) {
-    case RECEIVE_MOVIES:
+    case RECEIVE_MOVIES_FROM_SCROLL:
       return action.payload.page;
     default:
       return state;
@@ -62,7 +48,7 @@ const page = (state = initialState.page, action) => {
 
 const totalPages = (state = initialState.totalPages, action) => {
   switch (action.type) {
-    case RECEIVE_MOVIES:
+    case RECEIVE_MOVIES_FROM_SCROLL:
       return action.payload.totalPages;
     default:
       return state;
@@ -75,7 +61,7 @@ const isFetching = (state = initialState.isFetching, action) => {
       return true;
     case RECEIVE_MOVIES:
       return false;
-    case RECEIVE_SEARCH_MOVIES:
+    case RECEIVE_MOVIES_FROM_SCROLL:
       return false;
     case FAILURE_MOVIES:
       return false;
@@ -105,7 +91,6 @@ const genresById = (state = null, action) => {
 export default combineReducers({
   moviesSelector,
   moviesByGenre,
-  moviesBySearch,
   genresById,
   isFetching,
   page,

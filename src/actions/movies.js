@@ -5,7 +5,6 @@ import {
   MOVIES_SELECTOR,
   REQUEST_GENRES_BY_ID,
   RECEIVE_GENRES_BY_ID,
-  RECEIVE_SEARCH_MOVIES,
   RECEIVE_MOVIES_FROM_SCROLL,
 } from './constants';
 import { updSearchField } from './search';
@@ -30,8 +29,6 @@ const fetchMovies = dispatch => (
 
   if (fromScroll) {
     receivedFrom = receiveFromScroll;
-  } else if (movieSelector === 'search') {
-    receivedFrom = receiveSearchMovies;
   } else {
     receivedFrom = receiveMovies;
   }
@@ -120,19 +117,13 @@ const receiveMovies = (moviesSelector, movies) => {
   };
 };
 
-const receiveSearchMovies = (moviesSelector, movies) => ({
-  type: RECEIVE_SEARCH_MOVIES,
-  payload: {
-    moviesSelector,
-    movies: movies.results,
-  },
-});
-
 const receiveFromScroll = (moviesSelector, movies) => ({
   type: RECEIVE_MOVIES_FROM_SCROLL,
   payload: {
     moviesSelector,
     movies: movies.results,
+    page: movies.page,
+    totalPages: movies.total_pages,
   },
 });
 
