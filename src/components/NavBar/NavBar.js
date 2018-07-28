@@ -36,7 +36,7 @@ class NavBar extends React.Component {
 
     return (
       <div className="nav-bar">
-        <Link to="/movies">
+        <Link to="/movies/">
           <div className="nav-bar__title">Books are better</div>
         </Link>
         <div className="nav-bar__items">
