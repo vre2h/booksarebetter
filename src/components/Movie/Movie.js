@@ -29,7 +29,6 @@ class Movie extends React.Component {
   render() {
     const { movieInfo, genresById, isFav } = this.props;
     const { id, title, genre_ids, poster_path } = movieInfo;
-    const imgUrl = `https://image.tmdb.org/t/p/w200/${poster_path}`;
 
     return (
       <Link to={`movie/${id}`} replace>
@@ -39,11 +38,14 @@ class Movie extends React.Component {
               {isFav ? <Glyphicon glyph="minus" /> : <Glyphicon glyph="star" />}
             </Button>
           </div>
-          <img
-            className="movie-img"
-            src={imgUrl}
-            alt="Sorry, we can't upload!"
-          />
+          {poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w200/${poster_path}`}
+              alt="Sorry, we can't upload."
+            />
+          ) : (
+            ''
+          )}
           <div className="movie-desc">
             {' '}
             <p className="movie-title">{title}</p>

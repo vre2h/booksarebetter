@@ -33,7 +33,6 @@ class MoviePage extends React.Component {
       production_companies: productionCompanies,
       production_countries: productionCountries,
     } = movie;
-    const imgUrl = `https://image.tmdb.org/t/p/w200/${poster_path}`;
 
     return (
       <div className="movie-page__wrapper">
@@ -42,7 +41,14 @@ class MoviePage extends React.Component {
             {original_title}
           </h1>
           <div className="movie-page__img">
-            <img src={imgUrl} alt="Sorry, we can't upload.." />
+            {poster_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w200/${poster_path}`}
+                alt="Sorry, we can't upload.."
+              />
+            ) : (
+              ''
+            )}
             <div className="movie-page__status">
               <h3>
                 <Label bsStyle="success">
@@ -101,14 +107,19 @@ class MoviePage extends React.Component {
               <div className="movie-page__companies-wrapper">
                 <h4>Companies:</h4>
                 <div className="movie-page__companies">
-                  {productionCompanies.map(({ id, logo_path: logoPath }) => (
-                    <div key={id} className="movie-page__companie">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w200/${logoPath}`}
-                        alt="Sorry!"
-                      />
-                    </div>
-                  ))}
+                  {productionCompanies.map(
+                    ({ id, logo_path: logoPath }) =>
+                      logoPath ? (
+                        <div key={id} className="movie-page__companie">
+                          <img
+                            src={`https://image.tmdb.org/t/p/w200/${logoPath}`}
+                            alt="Sorry, we can't upload.."
+                          />
+                        </div>
+                      ) : (
+                        ''
+                      )
+                  )}
                 </div>
               </div>
             )}
