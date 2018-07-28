@@ -2,7 +2,7 @@ import React from 'react';
 import MovieContainer from '../../containers/MovieContainer';
 import './styles.css';
 
-const Movies = ({ movies, genresById, genreName, isFetching }) => {
+const Movies = ({ movies, genresById, genreName, isFetching, ...rest }) => {
   return (
     <div className="movies-wrapper">
       <h1 className="movies-title">{genreName}</h1>
@@ -15,6 +15,7 @@ const Movies = ({ movies, genresById, genreName, isFetching }) => {
                 id={movieInfo.id.toString()}
                 movieInfo={movieInfo}
                 genresById={genresById}
+                {...rest}
               />
             );
           })

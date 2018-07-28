@@ -28,6 +28,7 @@ class MoviesSearchContainer extends React.Component {
         genreName={genreName}
         isFetching={isFetching}
         movies={movies}
+        fromSearch={true}
       />
     );
   }
