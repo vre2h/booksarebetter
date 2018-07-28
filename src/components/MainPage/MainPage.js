@@ -4,6 +4,7 @@ import MoviesContainer from '../../containers/MoviesContainer';
 import NavBarContainer from '../../containers/NavBarContainer';
 import MoviesSearchContainer from '../../containers/MoviesSearchContainer';
 import MoviePageContainer from '../../containers/MoviePageContainer';
+import FavoritesContainer from '../../containers/FavoritesContainer';
 
 class MainPage extends React.Component {
   render() {
@@ -14,6 +15,10 @@ class MainPage extends React.Component {
         <NavBarContainer changePathOnSearch={changePathOnSearch} />
         <Switch>
           <Route exact path="/movies" component={MoviesContainer} />
+          <Route
+            path="/movies/favorites"
+            render={() => <FavoritesContainer />}
+          />
           <Route
             path="/movies/search/:searcher"
             render={props => <MoviesSearchContainer {...props} />}
