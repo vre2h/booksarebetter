@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchMovie } from '../actions/moviePage';
 import MoviePage from '../components/MoviePage';
 import { addFav, removeFav } from '../actions/favs';
+import PropTypes from 'prop-types';
+
 class MoviePageContainer extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -10,6 +12,14 @@ class MoviePageContainer extends React.Component {
 
     fetchData(id);
   }
+
+  static propTypes = {
+    addFav: PropTypes.func.isRequired,
+    removeFav: PropTypes.func.isRequired,
+    fetchData: PropTypes.func.isRequired,
+    movie: PropTypes.object.isRequired,
+    favs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  };
 
   render() {
     const { id } = this.props.match.params;

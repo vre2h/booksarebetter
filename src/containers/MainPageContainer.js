@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MainPage from '../components/MainPage/MainPage';
 import { requestMovies } from '../actions';
+import PropTypes from 'prop-types';
 
 class MainPageContainer extends React.Component {
   constructor(props) {
@@ -9,6 +10,11 @@ class MainPageContainer extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
   }
+
+  static propTypes = {
+    genresById: PropTypes.object,
+    fetchData: PropTypes.func.isRequired,
+  };
 
   handleChange(nextValue) {
     this.props.history.push(`/${nextValue}`);
@@ -27,11 +33,9 @@ class MainPageContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    genresById: state.moviesInfo.genresById,
-  };
-};
+const mapStateToProps = state => ({
+  genresById: state.moviesInfo.genresById,
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchData: (...arg) => dispatch(requestMovies(...arg)),

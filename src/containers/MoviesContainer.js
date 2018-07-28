@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Movies from '../components/Movies/Movies';
 import { requestMovies } from '../actions';
+import PropTypes from 'prop-types';
 
 class MoviesContainer extends React.Component {
   constructor(props) {
@@ -10,6 +11,16 @@ class MoviesContainer extends React.Component {
     this.onScroll = this.onScroll.bind(this);
     this.page = 1;
   }
+
+  static propTypes = {
+    genreName: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    currFetchPage: PropTypes.number,
+    totalFetchPages: PropTypes.number,
+    genresById: PropTypes.object,
+    fetchData: PropTypes.func.isRequired,
+  };
 
   componentDidMount() {
     this.props.fetchData('popular', 1, undefined, this.props.genresById, false);

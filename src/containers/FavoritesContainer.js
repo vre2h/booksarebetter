@@ -4,8 +4,19 @@ import Movies from '../components/Movies/Movies';
 import { fetchFavMovies } from '../actions/favs';
 import { addFav, removeFav } from '../actions/favs';
 import moviesSelector from '../selectors/favoriteMovies';
+import PropTypes from 'prop-types';
 
 class FavoritesContainer extends React.Component {
+  static propTypes = {
+    favoriteIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+    fetchFavMovies: PropTypes.func.isRequired,
+    genreName: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    addFav: PropTypes.func.isRequired,
+    removeFav: PropTypes.func.isRequired,
+  };
+
   componentDidMount() {
     const { favoriteIds, fetchFavMovies } = this.props;
 
