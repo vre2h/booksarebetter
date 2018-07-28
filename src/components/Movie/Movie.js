@@ -1,9 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Badge, Button, Glyphicon } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 class Movie extends React.Component {
+  static propTypes = {
+    addFav: PropTypes.func.isRequired,
+    removeFav: PropTypes.func.isRequired,
+    isFav: PropTypes.bool.isRequired,
+    genresById: PropTypes.object.isRequired,
+    movieInfo: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
 

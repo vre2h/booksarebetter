@@ -4,8 +4,14 @@ import { Field } from 'redux-form';
 import './styles.css';
 import { Button } from 'react-bootstrap';
 import RenderTextField from './TextField';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
+  };
+
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
 

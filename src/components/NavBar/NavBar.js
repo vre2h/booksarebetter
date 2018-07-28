@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FormControl } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 class NavBar extends React.Component {
@@ -9,6 +10,12 @@ class NavBar extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
   }
+
+  static propTypes = {
+    changePathOnSearch: PropTypes.func.isRequired,
+    fetchData: PropTypes.func.isRequired,
+    updSearchField: PropTypes.func.isRequired,
+  };
 
   handleChange(e) {
     const value = e.target.value.trim();

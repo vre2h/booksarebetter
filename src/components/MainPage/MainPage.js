@@ -5,8 +5,13 @@ import NavBarContainer from '../../containers/NavBarContainer';
 import MoviesSearchContainer from '../../containers/MoviesSearchContainer';
 import MoviePageContainer from '../../containers/MoviePageContainer';
 import FavoritesContainer from '../../containers/FavoritesContainer';
+import PropTypes from 'prop-types';
 
 class MainPage extends React.Component {
+  static propTypes = {
+    changePathOnSearch: PropTypes.func.isRequired,
+  };
+
   render() {
     const { changePathOnSearch } = this.props;
 
