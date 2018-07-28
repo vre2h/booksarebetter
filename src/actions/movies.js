@@ -27,6 +27,7 @@ const fetchMovies = dispatch => (
     search: `https://api.themoviedb.org/3/search/movie?api_key=e8e227add2a2e5c168f7c3845928d8db&language=en-US&query=${searchText}&include_adult=true`,
   };
   let receivedFrom;
+
   if (fromScroll) {
     receivedFrom = receiveFromScroll;
   } else if (movieSelector === 'search') {
