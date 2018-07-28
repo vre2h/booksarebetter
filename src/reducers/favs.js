@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { ADD_FAV, REMOVE_FAV } from '../actions/constants';
 
 const favoriteIds = (state = [], action) => {
@@ -14,4 +13,4 @@ const favoriteIds = (state = [], action) => {
   }
 };
 
-export default combineReducers({ favoriteIds });
+export default favoriteIds;

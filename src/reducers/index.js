@@ -5,7 +5,7 @@ import isAuth from './isAuth';
 import movies from './getMovies';
 import search from './search';
 import movie from './getMovie';
-import favorites from './favs';
+import favorites from './getFavMovies';
 
 export default combineReducers({
   form: reduxFormReducer,
