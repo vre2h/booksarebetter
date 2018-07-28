@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FormControl } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import './styles.css';
 
 class NavBar extends React.Component {
@@ -32,7 +33,7 @@ class NavBar extends React.Component {
       // change url
       changePathOnSearch(`movies/search?key=${value}`);
       // fetch movies action
-      fetchData('search', undefined, e.target.value, genresById);
+      throttle(fetchData('search', undefined, e.target.value, genresById), 300);
     } else {
       changePathOnSearch('movies');
     }
