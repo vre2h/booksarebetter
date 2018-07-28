@@ -27,12 +27,12 @@ class Movie extends React.Component {
   }
 
   render() {
-    const { movieInfo, genresById, isFav, fromSearch } = this.props;
+    const { movieInfo, genresById, isFav } = this.props;
     const { id, title, genre_ids, poster_path } = movieInfo;
     const imgUrl = `https://image.tmdb.org/t/p/w200/${poster_path}`;
-    const urlToMovie = fromSearch ? `../movie/${id}` : `movie/${id}`;
+
     return (
-      <Link to={urlToMovie} replace>
+      <Link to={`movie/${id}`} replace>
         <div className="movie">
           <div className="movie-top-overlay">
             <Button bsSize="small" onClick={this.handleClick.bind(this, id)}>
