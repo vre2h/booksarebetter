@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Movies from '../components/Movies/Movies';
 import { fetchFavMovies } from '../actions/favs';
 import { addFav, removeFav } from '../actions/favs';
+import moviesSelector from '../selectors/favoriteMovies';
 
 class FavoritesContainer extends React.Component {
   componentDidMount() {
@@ -27,7 +28,7 @@ class FavoritesContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  movies: state.favorites.movies || [],
+  movies: moviesSelector(state) || [],
   favoriteIds: state.favorites.favoriteIds,
   genresById: state.moviesInfo.genresById || [],
   genreName: 'favorites'.toUpperCase(),
