@@ -21,7 +21,7 @@ const Movies = ({ movies, genresById, genreName, isFetching, ...rest }) => {
           })
         ) : (
           <h3>
-            <strong>Holy guacamole!</strong> There is no post with your input!
+            <strong>Holy guacamole!</strong> There is no post!
           </h3>
         )}
       </div>
