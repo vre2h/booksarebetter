@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { addFav, removeFav } from '../actions/favs';
 import Movie from '../components/Movie/Movie';
 import PropTypes from 'prop-types';
+import isFav from '../selectors/isFav';
 
 const mapStateToProps = (state, ownProps) => ({
-  isFav: state.favorites.favoriteIds.includes(ownProps.id),
+  isFav: isFav(state, ownProps),
 });
 
 mapStateToProps.propTypes = {
