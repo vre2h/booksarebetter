@@ -4,15 +4,17 @@ import { PropTypes } from 'prop-types';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from '../App';
 import './styles.css';
-
+import ScrollToTop from '../ScrollToTop.js';
 const Root = ({ store }) => {
   const { isAuth } = store.getState();
   return (
     <Provider store={store}>
       <Router>
-        <div className={`container ${isAuth ? '' : 'login-container'}`}>
-          <App />
-        </div>
+        <ScrollToTop>
+          <div className={`container ${isAuth ? '' : 'login-container'}`}>
+            <App />
+          </div>
+        </ScrollToTop>
       </Router>
     </Provider>
   );
