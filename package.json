@@ -1,7 +1,6 @@
 {
   "name": "booksarebetter",
   "version": "0.1.0",
-  "homepage": "https://vre2h.github.io/booksarebetter",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.4.1",
