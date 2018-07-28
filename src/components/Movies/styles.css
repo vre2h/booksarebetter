@@ -35,7 +35,7 @@
 
 @media screen and (min-width: 540px) {
   .movies {
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
   }
 }
