@@ -29,11 +29,16 @@ class NavBar extends React.Component {
 
     updSearchField(e.target.value);
 
+    const throttled = throttle(
+      () => fetchData('search', undefined, e.target.value, genresById),
+      300
+    );
+
     if (value !== '') {
       // change url
       changePathOnSearch(`movies/search?key=${value}`);
       // fetch movies action
-      throttle(fetchData('search', undefined, e.target.value, genresById), 300);
+      throttled();
     } else {
       changePathOnSearch('movies');
     }
