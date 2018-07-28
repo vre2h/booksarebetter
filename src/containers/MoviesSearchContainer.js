@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import Movies from '../components/Movies/Movies';
 import { requestMovies, updSearchField } from '../actions';
-import PropTypes from 'prop-types';
 
 const mapStateToProps = state => {
   return {
@@ -15,9 +16,15 @@ const mapStateToProps = state => {
 
 class MoviesSearchContainer extends React.Component {
   componentDidMount() {
-    const searcher = this.props.location.search.slice(5);
-    this.props.updSearchField(searcher);
-    this.props.fetchData('search', undefined, searcher, this.props.genresById);
+    const parsed = queryString.parse(this.props.location.search);
+
+    this.props.updSearchField(parsed['key']);
+    this.props.fetchData(
+      'search',
+      undefined,
+      parsed['key'],
+      this.props.genresById
+    );
   }
 
   static propTypes = {
