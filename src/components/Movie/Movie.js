@@ -9,7 +9,7 @@ class Movie extends React.Component {
     addFav: PropTypes.func.isRequired,
     removeFav: PropTypes.func.isRequired,
     isFav: PropTypes.bool.isRequired,
-    genresById: PropTypes.object.isRequired,
+    genresById: PropTypes.array.isRequired,
     movieInfo: PropTypes.object.isRequired,
   };
 
