@@ -2,9 +2,8 @@ import { UPD_SEARCH_FIELD } from '../actions/constants';
 
 export const updSearchField = (state = '', action) => {
   switch (action.type) {
-    case UPD_SEARCH_FIELD: {
+    case UPD_SEARCH_FIELD:
       return action.payload.value;
-    }
     default:
       return state;
   }
