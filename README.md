@@ -18,7 +18,7 @@ yarn test
 
 * To launch code coverage tool:
 ```javascript
-yarn test ---coverage
+yarn test --coverage
 ```
 ---
 
