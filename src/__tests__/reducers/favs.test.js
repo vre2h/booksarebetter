@@ -1,4 +1,4 @@
-import favoriteIds from '../../reducers/favs';
+import { favoriteIds } from '../../reducers/favs';
 import { ADD_FAV, REMOVE_FAV } from '../../actions/constants';
 
 test('add film on fav', () => {

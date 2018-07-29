@@ -1,6 +1,6 @@
 import { ADD_FAV, REMOVE_FAV } from '../actions/constants';
 
-const favoriteIds = (state = [], action) => {
+export const favoriteIds = (state = [], action) => {
   switch (action.type) {
     case ADD_FAV: {
       return state.concat(action.payload.id);
