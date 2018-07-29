@@ -10,3 +10,7 @@ test('remove film on fav', () => {
     [1]
   );
 });
+
+test('return state on non-action', () => {
+  expect(favoriteIds([1, 2, 3], { type: 'WOW' })).toEqual([1, 2, 3]);
+});

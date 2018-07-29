@@ -13,3 +13,7 @@ test('userdata on login', () => {
     })
   ).toEqual({ username: 'username', password: 'password' });
 });
+
+test('return state on non-action', () => {
+  expect(currentUser({}, { type: 'WOW' })).toEqual({});
+});
