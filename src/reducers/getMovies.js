@@ -17,7 +17,7 @@ const initialState = {
   moviesBySearch: [],
 };
 
-const moviesSelector = (state = initialState.moviesSelector, action) => {
+export const moviesSelector = (state = initialState.moviesSelector, action) => {
   switch (action.type) {
     case MOVIES_SELECTOR:
       return action.payload.moviesSelector;
@@ -26,7 +26,7 @@ const moviesSelector = (state = initialState.moviesSelector, action) => {
   }
 };
 
-const moviesByGenre = (state = initialState.movies, action) => {
+export const moviesByGenre = (state = initialState.movies, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
       return action.payload.movies;
@@ -37,7 +37,7 @@ const moviesByGenre = (state = initialState.movies, action) => {
   }
 };
 
-const page = (state = initialState.page, action) => {
+export const page = (state = initialState.page, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES_FROM_SCROLL:
       return action.payload.page;
@@ -46,7 +46,7 @@ const page = (state = initialState.page, action) => {
   }
 };
 
-const totalPages = (state = initialState.totalPages, action) => {
+export const totalPages = (state = initialState.totalPages, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES_FROM_SCROLL:
       return action.payload.totalPages;
@@ -55,7 +55,7 @@ const totalPages = (state = initialState.totalPages, action) => {
   }
 };
 
-const isFetching = (state = initialState.isFetching, action) => {
+export const isFetching = (state = initialState.isFetching, action) => {
   switch (action.type) {
     case REQUEST_MOVIES:
       return true;
@@ -70,7 +70,7 @@ const isFetching = (state = initialState.isFetching, action) => {
   }
 };
 
-const error = (state = null, action) => {
+export const error = (state = null, action) => {
   switch (action.type) {
     case FAILURE_MOVIES:
       return action.err;
@@ -79,7 +79,7 @@ const error = (state = null, action) => {
   }
 };
 
-const genresById = (state = null, action) => {
+export const genresById = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_GENRES_BY_ID:
       return action.payload.genresById;

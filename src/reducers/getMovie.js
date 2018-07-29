@@ -10,7 +10,7 @@ const initialState = {
   movie: {},
 };
 
-const currentMovie = (state = initialState.movie, action) => {
+export const currentMovie = (state = initialState.movie, action) => {
   switch (action.type) {
     case RECEIVE_MOVIE:
       return action.payload.movie;
@@ -19,7 +19,7 @@ const currentMovie = (state = initialState.movie, action) => {
   }
 };
 
-const isFetching = (state = initialState.isFetching, action) => {
+export const isFetching = (state = initialState.isFetching, action) => {
   switch (action.type) {
     case REQUEST_MOVIE:
       return true;
@@ -32,7 +32,7 @@ const isFetching = (state = initialState.isFetching, action) => {
   }
 };
 
-const error = (state = null, action) => {
+export const error = (state = null, action) => {
   switch (action.type) {
     case FAILURE_MOVIE:
       return action.err;

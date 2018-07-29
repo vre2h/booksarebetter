@@ -11,7 +11,7 @@ const initialState = {
   movies: [],
 };
 
-const movies = (state = initialState.movies, action) => {
+export const movies = (state = initialState.movies, action) => {
   switch (action.type) {
     case RECEIVE_FAV_MOVIES:
       return action.payload.movies;
@@ -20,7 +20,7 @@ const movies = (state = initialState.movies, action) => {
   }
 };
 
-const isFetching = (state = initialState.isFetching, action) => {
+export const isFetching = (state = initialState.isFetching, action) => {
   switch (action.type) {
     case REQUEST_FAV_MOVIES:
       return true;
@@ -33,7 +33,7 @@ const isFetching = (state = initialState.isFetching, action) => {
   }
 };
 
-const error = (state = null, action) => {
+export const error = (state = null, action) => {
   switch (action.type) {
     case FAILURE_FAV_MOVIES:
       return action.err;

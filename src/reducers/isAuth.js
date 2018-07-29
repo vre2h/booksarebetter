@@ -1,6 +1,6 @@
 import { LOGOUT, LOGIN_SUCCESS } from '../actions/constants';
 
-const isAuth = (state = false, action) => {
+export const isAuth = (state = false, action) => {
   switch (action.type) {
     case LOGOUT: {
       return false;
