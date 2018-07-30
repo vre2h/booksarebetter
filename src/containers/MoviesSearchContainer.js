@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import Movies from '../components/Movies/Movies';
 import { requestMovies, updSearchField } from '../actions';
+import { allMovies } from '../reducers/getMovies';
 
 const mapStateToProps = state => {
   return {
     genresById: state.moviesInfo.genresById,
     genreName: 'SEARCH',
     isFetching: state.moviesInfo.isFetching,
-    movies: state.moviesInfo.moviesByGenre,
+    movies: allMovies(state.moviesInfo),
   };
 };
 
@@ -38,7 +39,6 @@ class MoviesSearchContainer extends React.Component {
 
   render() {
     const { genresById, genreName, isFetching, movies } = this.props;
-
     return (
       <Movies
         genresById={genresById}

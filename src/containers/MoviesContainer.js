@@ -4,6 +4,7 @@ import Movies from '../components/Movies/Movies';
 import { requestMovies } from '../actions';
 import PropTypes from 'prop-types';
 import genreName from '../selectors/genreName';
+import { allMovies } from '../reducers/getMovies';
 
 class MoviesContainer extends React.Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class MoviesContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.moviesInfo.moviesByGenre,
+    movies: allMovies(state.moviesInfo),
     genresById: state.moviesInfo.genresById,
     genreName: genreName(state),
     isFetching: state.moviesInfo.isFetching,
