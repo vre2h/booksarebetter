@@ -12,6 +12,7 @@ class NavBarContainer extends React.Component {
     fetchData: PropTypes.func.isRequired,
     updSearchField: PropTypes.func.isRequired,
   };
+
   render() {
     const { changePathOnSearch, logOut, fetchData, ...rest } = this.props;
 
