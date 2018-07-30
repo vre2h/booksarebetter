@@ -11,7 +11,7 @@ const initialState = {
   moviesSelector: 'popular',
   isFetching: false,
   moviesById: {},
-  allIds: new Set(),
+  allIds: new Set([]),
   page: 1,
   totalPages: 0,
 };
@@ -50,7 +50,10 @@ export const allIds = (state = initialState.allIds, action) => {
       if (action.payload.moviesSelector === 'search') {
         return new Set([...action.payload.movies.map(elem => elem.id)]);
       }
+
       return new Set([...state, ...action.payload.movies.map(elem => elem.id)]);
+    case 'CLEAN_STORE':
+      return new Set([]);
     default:
       return state;
   }

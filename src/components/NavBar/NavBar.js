@@ -25,6 +25,7 @@ class NavBar extends React.Component {
       fetchData,
       genresById,
       updSearchField,
+      cleanStore,
     } = this.props;
 
     updSearchField(e.target.value);
@@ -40,6 +41,7 @@ class NavBar extends React.Component {
       // fetch movies action
       throttled();
     } else {
+      cleanStore();
       changePathOnSearch('movies');
     }
   }

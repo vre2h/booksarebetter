@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar/NavBar';
-import { logOut, requestMovies, updSearchField } from '../actions';
+import { logOut, requestMovies, updSearchField, cleanStore } from '../actions';
 import PropTypes from 'prop-types';
 
 class NavBarContainer extends React.Component {
@@ -40,6 +40,7 @@ NavBarContainer = connect(
     logOut,
     fetchData: requestMovies,
     updSearchField,
+    cleanStore,
   }
 )(NavBarContainer);
 
