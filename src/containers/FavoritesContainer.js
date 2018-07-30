@@ -24,7 +24,7 @@ class FavoritesContainer extends React.Component {
 
   render() {
     const { movies, genresById, genreName, isFetching } = this.props;
-    console.log('a', genresById);
+
     return (
       <div>
         <Movies
