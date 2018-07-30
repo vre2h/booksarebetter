@@ -56,9 +56,6 @@ export const allIds = (state = initialState.allIds, action) => {
   }
 };
 
-export const allMovies = state =>
-  Array.from(state.allIds).map(id => state.moviesById[id]);
-
 export const page = (state = initialState.page, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
