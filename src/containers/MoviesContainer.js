@@ -34,11 +34,12 @@ class MoviesContainer extends React.Component {
   }
 
   onScroll() {
-    const { currFetchPage, genresById } = this.props;
+    const { currFetchPage, genresById, totalFetchPages } = this.props;
 
     if (
       window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
-      currFetchPage === this.page
+      currFetchPage === this.page &&
+      totalFetchPages >= currFetchPage
     ) {
       this.page += 1;
       this.props.fetchData(
