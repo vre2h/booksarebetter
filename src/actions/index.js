@@ -7,6 +7,7 @@ import {
 } from './movies';
 import { loginSuccess, logOut } from './login';
 import { updSearchField } from './search';
+import cleanStore from './cleanStore';
 
 export {
   loginSuccess,
@@ -17,4 +18,5 @@ export {
   selectGenre,
   requestMovies,
   updSearchField,
+  cleanStore,
 };
