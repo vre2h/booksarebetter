@@ -23,7 +23,7 @@ class MoviePageContainer extends React.Component {
 
   render() {
     const { id } = this.props.match.params;
-    const { movie, addFav, removeFav, favs } = this.props;
+    const { movie, addFav, removeFav, favs, isFetching } = this.props;
     const isFav = favs.includes(id);
 
     return (
@@ -33,6 +33,7 @@ class MoviePageContainer extends React.Component {
         addFav={addFav}
         removeFav={removeFav}
         id={id}
+        isFetching={isFetching}
       />
     );
   }
@@ -41,6 +42,7 @@ class MoviePageContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
   movie: state.movieInfo.currentMovie,
   favs: state.favorites.favoriteIds,
+  isFetching: state.movieInfo.isFetching,
 });
 
 const mapDispatchToProps = dispatch => ({
