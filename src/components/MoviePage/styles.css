@@ -96,6 +96,17 @@
   font-style: italic;
 }
 
+.movie-page__desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-page__tags,
+.movie-page__genres,
+.movie-page__top {
+  align-self: center;
+}
+
 .movie-page__tags {
   display: flex;
 }
@@ -140,6 +151,12 @@
 }
 
 @media screen and (min-width: 680px) {
+  .movie-page__tags,
+  .movie-page__genres,
+  .movie-page__top {
+    align-self: flex-start;
+  }
+
   .movie-page__title-big {
     display: block;
   }
