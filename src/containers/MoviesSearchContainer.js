@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import Movies from '../components/Movies/Movies';
 import { requestMovies, updSearchField } from '../actions';
-import { allMovies } from '../reducers/getMovies';
+import getMoviesSelector from '../selectors/getMovies';
 
 const mapStateToProps = state => {
   return {
     genresById: state.moviesInfo.genresById,
     genreName: 'SEARCH',
     isFetching: state.moviesInfo.isFetching,
-    movies: allMovies(state.moviesInfo),
+    movies: getMoviesSelector(state),
   };
 };
 
