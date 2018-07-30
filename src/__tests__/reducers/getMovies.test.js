@@ -4,23 +4,96 @@ import {
   totalPages,
   page,
   moviesSelector,
-  moviesByGenre,
   genresById,
+  allIds,
+  moviesById,
 } from '../../reducers/getMovies';
 import {
   REQUEST_MOVIES,
   RECEIVE_MOVIES,
-  RECEIVE_MOVIES_FROM_SCROLL,
   FAILURE_MOVIES,
   MOVIES_SELECTOR,
   RECEIVE_GENRES_BY_ID,
 } from '../../actions/constants';
 
+describe('test movies', () => {
+  test('non-action case', () => {
+    expect(moviesById({}, { type: 'wow' })).toEqual({});
+  });
+
+  test('new movies came', () => {
+    expect(
+      moviesById(
+        {},
+        {
+          type: RECEIVE_MOVIES,
+          payload: {
+            movies: [
+              { id: 1, name: 'Forest Gump' },
+              { id: 2, name: 'Inception' },
+            ],
+          },
+        }
+      )
+    ).toEqual({
+      1: { id: 1, name: 'Forest Gump' },
+      2: { id: 2, name: 'Inception' },
+    });
+  });
+});
+
+describe('test getting all ids', () => {
+  test('non-action case', () => {
+    const set = new Set([]);
+    expect(allIds(set, { type: 'wow' })).toEqual(set);
+  });
+
+  test('new movies came', () => {
+    const set = new Set([2]);
+    expect(
+      allIds(set, {
+        type: RECEIVE_MOVIES,
+        payload: {
+          moviesSelector: 'search',
+          movies: [{ id: 1 }, { id: 3 }],
+        },
+      })
+    ).toEqual(new Set([1, 3]));
+  });
+
+  test('clean store', () => {
+    const set = new Set([]);
+    expect(
+      allIds(set, {
+        type: 'CLEAN_STORE',
+        payload: {
+          movies: [{ id: 1 }, { id: 3 }],
+        },
+      })
+    ).toEqual(set);
+  });
+
+  test('new movies came from search', () => {
+    expect(
+      allIds(new Set([1, 2]), {
+        type: RECEIVE_MOVIES,
+        moviesSelector: 'search',
+        payload: {
+          movies: [
+            { id: 1, name: 'Forest Gump' },
+            { id: 2, name: 'Inception' },
+          ],
+        },
+      })
+    ).toEqual(new Set([1, 2]));
+  });
+});
+
 describe('testing total pages', () => {
   test('get total pages from onscroll', () => {
     expect(
       totalPages(0, {
-        type: RECEIVE_MOVIES_FROM_SCROLL,
+        type: RECEIVE_MOVIES,
         payload: {
           totalPages: 100,
         },
@@ -37,7 +110,7 @@ describe('testing page', () => {
   test('get page from onscroll', () => {
     expect(
       page(0, {
-        type: RECEIVE_MOVIES_FROM_SCROLL,
+        type: RECEIVE_MOVIES,
         payload: {
           page: 100,
         },
@@ -69,48 +142,12 @@ describe('testing isFetching', () => {
     expect(isFetching(true, { type: RECEIVE_MOVIES })).toBe(false);
   });
 
-  test('on scroll receive', () => {
-    expect(isFetching(true, { type: RECEIVE_MOVIES_FROM_SCROLL })).toBe(false);
-  });
-
   test('on failure', () => {
     expect(isFetching(true, { type: FAILURE_MOVIES })).toBe(false);
   });
 
   test('return state on non-action', () => {
     expect(isFetching(false, { type: 'WOW' })).toEqual(false);
-  });
-});
-
-describe('testing movies', () => {
-  test('on receive', () => {
-    expect(
-      moviesByGenre([], {
-        type: RECEIVE_MOVIES,
-        payload: {
-          movies: [{ id: 1, name: 'Forest Gump' }],
-        },
-      }),
-      [{ id: 1, name: 'Forest Gump' }]
-    );
-  });
-
-  test('on scroll receive', () => {
-    expect(
-      moviesByGenre([{ id: 1, name: 'Forest Gump' }], {
-        type: RECEIVE_MOVIES_FROM_SCROLL,
-        payload: {
-          movies: [{ id: 2, name: 'Inception' }],
-        },
-      }),
-      [{ id: 1, name: 'Forest Gump' }, { id: 2, name: 'Inception' }]
-    );
-  });
-
-  test('return state on non-action', () => {
-    expect(
-      moviesByGenre([{ id: 1, name: 'Forest Gump' }], { type: 'WOW' })
-    ).toEqual([{ id: 1, name: 'Forest Gump' }]);
   });
 });
 
