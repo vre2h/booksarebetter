@@ -5,16 +5,15 @@ import {
   RECEIVE_MOVIES,
   MOVIES_SELECTOR,
   RECEIVE_GENRES_BY_ID,
-  RECEIVE_MOVIES_FROM_SCROLL,
 } from '../actions/constants';
 
 const initialState = {
   moviesSelector: 'popular',
   isFetching: false,
-  movies: [],
+  moviesById: {},
+  allIds: new Set(),
   page: 1,
   totalPages: 0,
-  moviesBySearch: [],
 };
 
 export const moviesSelector = (state = initialState.moviesSelector, action) => {
@@ -26,20 +25,43 @@ export const moviesSelector = (state = initialState.moviesSelector, action) => {
   }
 };
 
-export const moviesByGenre = (state = initialState.movies, action) => {
+export const moviesById = (state = initialState.moviesById, action) => {
   switch (action.type) {
     case RECEIVE_MOVIES:
-      return action.payload.movies;
-    case RECEIVE_MOVIES_FROM_SCROLL:
-      return [...state, ...action.payload.movies];
+      const newState = action.payload.movies.reduce(
+        (acc, movie) => ({
+          ...acc,
+          [movie.id]: movie,
+        }),
+        {}
+      );
+      return {
+        ...state,
+        ...newState,
+      };
     default:
       return state;
   }
 };
 
+export const allIds = (state = initialState.allIds, action) => {
+  switch (action.type) {
+    case RECEIVE_MOVIES:
+      if (action.payload.moviesSelector === 'search') {
+        return new Set([...action.payload.movies.map(elem => elem.id)]);
+      }
+      return new Set([...state, ...action.payload.movies.map(elem => elem.id)]);
+    default:
+      return state;
+  }
+};
+
+export const allMovies = state =>
+  Array.from(state.allIds).map(id => state.moviesById[id]);
+
 export const page = (state = initialState.page, action) => {
   switch (action.type) {
-    case RECEIVE_MOVIES_FROM_SCROLL:
+    case RECEIVE_MOVIES:
       return action.payload.page;
     default:
       return state;
@@ -48,7 +70,7 @@ export const page = (state = initialState.page, action) => {
 
 export const totalPages = (state = initialState.totalPages, action) => {
   switch (action.type) {
-    case RECEIVE_MOVIES_FROM_SCROLL:
+    case RECEIVE_MOVIES:
       return action.payload.totalPages;
     default:
       return state;
@@ -60,8 +82,6 @@ export const isFetching = (state = initialState.isFetching, action) => {
     case REQUEST_MOVIES:
       return true;
     case RECEIVE_MOVIES:
-      return false;
-    case RECEIVE_MOVIES_FROM_SCROLL:
       return false;
     case FAILURE_MOVIES:
       return false;
@@ -90,7 +110,8 @@ export const genresById = (state = null, action) => {
 
 export default combineReducers({
   moviesSelector,
-  moviesByGenre,
+  moviesById,
+  allIds,
   genresById,
   isFetching,
   page,
