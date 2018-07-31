@@ -1,15 +1,13 @@
 import { isFetching, movies, error } from '../../reducers/getFavMovies';
 import {
-  REQUEST_FAV_MOVIES,
-  RECEIVE_FAV_MOVIES,
-  FAILURE_FAV_MOVIES,
-} from '../../actions/constants';
+  failureFavMovies,
+  requestFavMovies,
+  receiveFavMovies,
+} from '../../actions/favs';
 
 describe('testing error', () => {
   test('get error message', () => {
-    expect(error(null, { type: FAILURE_FAV_MOVIES, err: 'error' })).toBe(
-      'error'
-    );
+    expect(error(null, failureFavMovies('error'))).toBe('error');
   });
 
   test('return state on non-type', () => {
@@ -19,15 +17,15 @@ describe('testing error', () => {
 
 describe('testing isFetching', () => {
   test('on sent request', () => {
-    expect(isFetching(false, { type: REQUEST_FAV_MOVIES })).toBe(true);
+    expect(isFetching(false, requestFavMovies())).toBe(true);
   });
 
   test('on receive', () => {
-    expect(isFetching(true, { type: RECEIVE_FAV_MOVIES })).toBe(false);
+    expect(isFetching(true, receiveFavMovies())).toBe(false);
   });
 
   test('on failure', () => {
-    expect(isFetching(true, { type: FAILURE_FAV_MOVIES })).toBe(false);
+    expect(isFetching(true, failureFavMovies())).toBe(false);
   });
 
   test('return state on non-type', () => {
@@ -38,12 +36,7 @@ describe('testing isFetching', () => {
 describe('testing movies', () => {
   test('on receive', () => {
     expect(
-      movies([], {
-        type: RECEIVE_FAV_MOVIES,
-        payload: {
-          movies: [{ id: 1, name: 'Forest Gump' }],
-        },
-      })
+      movies([], receiveFavMovies([{ id: 1, name: 'Forest Gump' }]))
     ).toEqual([{ id: 1, name: 'Forest Gump' }]);
   });
 

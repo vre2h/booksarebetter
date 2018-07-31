@@ -9,12 +9,12 @@ import {
   moviesById,
 } from '../../reducers/getMovies';
 import {
-  REQUEST_MOVIES,
-  RECEIVE_MOVIES,
-  FAILURE_MOVIES,
-  MOVIES_SELECTOR,
-  RECEIVE_GENRES_BY_ID,
-} from '../../actions/constants';
+  receiveMovies,
+  failureMovies,
+  moviesSelector as movSelector,
+  receiveGenresById,
+} from '../../actions/movies';
+import { REQUEST_MOVIES } from '../../actions/constants';
 
 describe('test movies', () => {
   test('non-action case', () => {
@@ -25,15 +25,12 @@ describe('test movies', () => {
     expect(
       moviesById(
         {},
-        {
-          type: RECEIVE_MOVIES,
-          payload: {
-            movies: [
-              { id: 1, name: 'Forest Gump' },
-              { id: 2, name: 'Inception' },
-            ],
-          },
-        }
+        receiveMovies(undefined, {
+          results: [
+            { id: 1, name: 'Forest Gump' },
+            { id: 2, name: 'Inception' },
+          ],
+        })
       )
     ).toEqual({
       1: { id: 1, name: 'Forest Gump' },
@@ -51,13 +48,12 @@ describe('test getting all ids', () => {
   test('new movies came', () => {
     const set = new Set([2]);
     expect(
-      allIds(set, {
-        type: RECEIVE_MOVIES,
-        payload: {
-          moviesSelector: 'search',
-          movies: [{ id: 1 }, { id: 3 }],
-        },
-      })
+      allIds(
+        set,
+        receiveMovies('search', {
+          results: [{ id: 1 }, { id: 3 }],
+        })
+      )
     ).toEqual(new Set([1, 3]));
   });
 
@@ -75,16 +71,15 @@ describe('test getting all ids', () => {
 
   test('new movies came from search', () => {
     expect(
-      allIds(new Set([1, 2]), {
-        type: RECEIVE_MOVIES,
-        moviesSelector: 'search',
-        payload: {
-          movies: [
+      allIds(
+        new Set([1, 2]),
+        receiveMovies('search', {
+          results: [
             { id: 1, name: 'Forest Gump' },
             { id: 2, name: 'Inception' },
           ],
-        },
-      })
+        })
+      )
     ).toEqual(new Set([1, 2]));
   });
 });
@@ -92,12 +87,12 @@ describe('test getting all ids', () => {
 describe('testing total pages', () => {
   test('get total pages from onscroll', () => {
     expect(
-      totalPages(0, {
-        type: RECEIVE_MOVIES,
-        payload: {
-          totalPages: 100,
-        },
-      })
+      totalPages(
+        0,
+        receiveMovies(undefined, {
+          total_pages: 100,
+        })
+      )
     ).toBe(100);
   });
 
@@ -108,14 +103,7 @@ describe('testing total pages', () => {
 
 describe('testing page', () => {
   test('get page from onscroll', () => {
-    expect(
-      page(0, {
-        type: RECEIVE_MOVIES,
-        payload: {
-          page: 100,
-        },
-      })
-    ).toBe(100);
+    expect(page(0, receiveMovies(undefined, { page: 100 }))).toBe(100);
   });
 
   test('return state on non-action', () => {
@@ -125,7 +113,7 @@ describe('testing page', () => {
 
 describe('testing error', () => {
   test('get error message', () => {
-    expect(error(null, { type: FAILURE_MOVIES, err: 'error' })).toBe('error');
+    expect(error(null, failureMovies('error'))).toBe('error');
   });
 
   test('return state on non-action', () => {
@@ -139,11 +127,11 @@ describe('testing isFetching', () => {
   });
 
   test('on receive', () => {
-    expect(isFetching(true, { type: RECEIVE_MOVIES })).toBe(false);
+    expect(isFetching(true, receiveMovies(undefined, []))).toBe(false);
   });
 
   test('on failure', () => {
-    expect(isFetching(true, { type: FAILURE_MOVIES })).toBe(false);
+    expect(isFetching(true, failureMovies())).toBe(false);
   });
 
   test('return state on non-action', () => {
@@ -153,14 +141,7 @@ describe('testing isFetching', () => {
 
 describe('test selector', () => {
   test('return new state', () => {
-    expect(
-      moviesSelector('popular', {
-        type: MOVIES_SELECTOR,
-        payload: {
-          moviesSelector: 'search',
-        },
-      })
-    ).toBe('search');
+    expect(moviesSelector('popular', movSelector('search'))).toBe('search');
   });
 
   test('return state on non-action', () => {
@@ -172,14 +153,9 @@ describe('test selector', () => {
 
 describe('test getting genres by id', () => {
   test('return new state', () => {
-    expect(
-      genresById(null, {
-        type: RECEIVE_GENRES_BY_ID,
-        payload: {
-          genresById: [{ 1: 'family' }],
-        },
-      })
-    ).toEqual([{ 1: 'family' }]);
+    expect(genresById(null, receiveGenresById([{ 1: 'family' }]))).toEqual([
+      { 1: 'family' },
+    ]);
   });
 
   test('return state on non-action', () => {

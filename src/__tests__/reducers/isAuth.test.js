@@ -1,5 +1,5 @@
 import { isAuth } from '../../reducers/isAuth';
-import { LOGOUT, LOGIN_SUCCESS } from '../../actions/constants';
+import { logOut, loginSuccess } from '../../actions/login';
 
 describe('test is auth', () => {
   test('return state for non-action - 1', () => {
@@ -11,10 +11,10 @@ describe('test is auth', () => {
   });
 
   test('change state on logout', () => {
-    expect(isAuth(true, { type: LOGOUT })).toBe(false);
+    expect(isAuth(true, logOut())).toBe(false);
   });
 
   test('change state on login', () => {
-    expect(isAuth(false, { type: LOGIN_SUCCESS })).toBe(true);
+    expect(isAuth(false, loginSuccess())).toBe(true);
   });
 });

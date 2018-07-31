@@ -1,13 +1,13 @@
 import { isFetching, error, currentMovie } from '../../reducers/getMovie';
 import {
-  REQUEST_MOVIE,
-  RECEIVE_MOVIE,
-  FAILURE_MOVIE,
-} from '../../actions/constants';
+  failureMovie,
+  requestMovie,
+  receiveMovie,
+} from '../../actions/moviePage';
 
 describe('testing error', () => {
   test('get error message', () => {
-    expect(error(null, { type: FAILURE_MOVIE, err: 'error' })).toBe('error');
+    expect(error(null, failureMovie('error'))).toBe('error');
   });
 
   test('return state on non-action', () => {
@@ -17,15 +17,15 @@ describe('testing error', () => {
 
 describe('testing isFetching', () => {
   test('on sent request', () => {
-    expect(isFetching(false, { type: REQUEST_MOVIE })).toBe(true);
+    expect(isFetching(false, requestMovie())).toBe(true);
   });
 
   test('on receive', () => {
-    expect(isFetching(true, { type: RECEIVE_MOVIE })).toBe(false);
+    expect(isFetching(true, receiveMovie())).toBe(false);
   });
 
   test('on failure', () => {
-    expect(isFetching(true, { type: FAILURE_MOVIE })).toBe(false);
+    expect(isFetching(true, failureMovie())).toBe(false);
   });
 
   test('return state on non-action', () => {
@@ -36,12 +36,7 @@ describe('testing isFetching', () => {
 describe('testing movies', () => {
   test('on receive', () => {
     expect(
-      currentMovie([], {
-        type: RECEIVE_MOVIE,
-        payload: {
-          movie: { id: 1, name: 'Forest Gump' },
-        },
-      })
+      currentMovie([], receiveMovie({ id: 1, name: 'Forest Gump' }))
     ).toEqual({ id: 1, name: 'Forest Gump' });
   });
 

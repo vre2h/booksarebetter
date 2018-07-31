@@ -1,5 +1,5 @@
+import { updSearchField as actionUpdSearchField } from '../../actions/search';
 import { updSearchField } from '../../reducers/search';
-import { UPD_SEARCH_FIELD } from '../../actions/constants';
 
 describe('test search field updater', () => {
   test('return state on non-action ', () => {
@@ -7,8 +7,6 @@ describe('test search field updater', () => {
   });
 
   test('return new state ', () => {
-    expect(
-      updSearchField('a', { type: UPD_SEARCH_FIELD, payload: { value: 'aa' } })
-    ).toBe('aa');
+    expect(updSearchField('a', actionUpdSearchField('aa'))).toBe('aa');
   });
 });
