@@ -90,17 +90,15 @@ const failureMovies = err => ({
   err,
 });
 
-const receiveMovies = (moviesSelector, movies) => {
-  return {
-    type: RECEIVE_MOVIES,
-    payload: {
-      moviesSelector,
-      movies: movies.results,
-      page: movies.page,
-      totalPages: movies.total_pages,
-    },
-  };
-};
+const receiveMovies = (moviesSelector, movies) => ({
+  type: RECEIVE_MOVIES,
+  payload: {
+    moviesSelector,
+    movies: movies.results,
+    page: movies.page,
+    totalPages: movies.total_pages,
+  },
+});
 
 export {
   failureMovies,
