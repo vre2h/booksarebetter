@@ -29,4 +29,4 @@ const fetchMovie = id => dispatch => {
     .catch(err => dispatch(failureMovie(err)));
 };
 
-export { fetchMovie };
+export { fetchMovie, failureMovie, requestMovie, receiveMovie };
