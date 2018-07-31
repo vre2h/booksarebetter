@@ -14,6 +14,7 @@ import {
   moviesSelector as movSelector,
   receiveGenresById,
 } from '../../actions/movies';
+import cleanStore from '../../actions/cleanStore';
 import { REQUEST_MOVIES } from '../../actions/constants';
 
 describe('test movies', () => {
@@ -57,11 +58,13 @@ describe('test getting all ids', () => {
     ).toEqual(new Set([1, 3]));
   });
 
+  const cleanStoreType = cleanStore();
+
   test('clean store', () => {
     const set = new Set([]);
     expect(
       allIds(set, {
-        type: 'CLEAN_STORE',
+        cleanStoreType,
         payload: {
           movies: [{ id: 1 }, { id: 3 }],
         },
