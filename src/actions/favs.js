@@ -55,4 +55,11 @@ const fetchFavMovies = ids => dispatch => {
     .catch(err => dispatch(failureFavMovies(err)));
 };
 
-export { addFav, removeFav, fetchFavMovies };
+export {
+  addFav,
+  removeFav,
+  fetchFavMovies,
+  failureFavMovies,
+  requestFavMovies,
+  receiveFavMovies,
+};
